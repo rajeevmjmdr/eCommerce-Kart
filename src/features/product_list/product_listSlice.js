@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './counterAPI';
+import { fetchCount } from './product_listAPI';
 
 const initialState = {
   value: 0,
@@ -15,7 +15,7 @@ export const incrementAsync = createAsyncThunk(
   }
 );
 
-export const counterSlice = createSlice({
+export const product_listSlice = createSlice({
   name: 'counter',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
@@ -38,10 +38,10 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment} = counterSlice.actions;
+export const { increment} = product_listSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state.
 export const selectCount = (state) => state.counter.value;
 
-export default counterSlice.reducer;
+export default product_listSlice.reducer;
