@@ -1,4 +1,4 @@
-import Product_list from "../features/product_list/Product_list"
+import Product_list from "../features/product/Product_list"
 
 const HomePage = ()=>{
     return(
