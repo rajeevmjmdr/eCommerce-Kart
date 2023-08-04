@@ -1,8 +1,8 @@
-import Product_list from "../features/product/Product_list"
+import ProductList from "../features/product/ProductList"
 
 const HomePage = ()=>{
     return(
-        <Product_list></Product_list>
+        <ProductList></ProductList>
     )
 }
 export default HomePage
