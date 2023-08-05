@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAllProducts , getProductsByFilter} from './productAPI';
+import { getAllBrands, getAllCategories, getAllProducts , getProductsByFilter} from './productAPI';
 
 const initialState = {
   products: [],
+  categories: [],
+  brands: [],
   status: 'idle',
   totalItems:0
 };
@@ -20,6 +22,24 @@ export const getProductsByFilterAsync = createAsyncThunk(
   'product/getProductsByFilter',
   async ({filter,sort,pagination}) => {
     const response = await getProductsByFilter({filter,sort,pagination});
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+export const getAllCategoriesAsync = createAsyncThunk(
+  'product/getAllCategories',
+  async () => {
+    const response = await getAllCategories();
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+export const getAllBrandsAsync = createAsyncThunk(
+  'product/getAllBrands',
+  async () => {
+    const response = await getAllBrands();
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -50,11 +70,27 @@ export const productSlice = createSlice({
         state.status = 'idle';
         state.products = action.payload.products;
         state.totalItems = action.payload.totalItems;
+      })
+      .addCase(getAllCategoriesAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getAllCategoriesAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.categories = action.payload.categories;
+      })
+      .addCase(getAllBrandsAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getAllBrandsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.brands = action.payload.brands;
       });
   },
 });
 
 export const selectAllProducts = (state) => state.product.products;
+export const selectAllCategories = (state) => state.product.categories;
+export const selectAllBrands = (state) => state.product.brands;
 export const selectTotalItems = (state) => state.product.totalItems;
 
 export default productSlice.reducer;
