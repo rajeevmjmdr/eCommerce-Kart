@@ -327,7 +327,7 @@ const Checkout = () => {
             </div>
       </div>
       <div className="lg:col-span-2">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12 mt-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-2 space-y-12 mt-10">
         <div className="px-8 mt-8 bg-white">
           <h1 className="py-5 text-4xl font-bold tracking-tight text-gray-900 border-b border-gray-200">
             Cart
