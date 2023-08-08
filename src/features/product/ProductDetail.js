@@ -5,6 +5,8 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsByIdAsync, selectProductById } from "./productSlice";
+import { selectLoggedInUser } from "../auth/authSlice";
+import { addToCartAsync } from "../cart/cartSLice";
 
 const breadcrumbs = [
   { id: 1, name: "Men", href: "#" },
@@ -49,6 +51,12 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const product = useSelector(selectProductById)
   const params = useParams();
+  const user = useSelector(selectLoggedInUser);
+
+  const handleCart = (e)=>{
+    e.preventDefault();
+    dispatch(addToCartAsync({...product,user:user.id,quantity:1}));
+  }
   
 useEffect(()=>{
   console.log(params);
@@ -299,14 +307,13 @@ useEffect(()=>{
                     </div>
                   </RadioGroup>
                 </div>
-                <Link to="/cart">
+               
                   <button
-                    type="submit"
+                    onClick={handleCart}
                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Add to Cart
                   </button>
-                </Link>
               </form>
             </div>
 

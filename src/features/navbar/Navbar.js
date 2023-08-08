@@ -6,6 +6,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectitems } from "../cart/cartSLice";
 
 const user = {
   name: "Rajeev",
@@ -25,6 +27,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar({ children }) {
+  const items = useSelector(selectitems);
   return (
     
       <div className="min-h-full">
@@ -76,9 +79,9 @@ export default function Navbar({ children }) {
                             aria-hidden="true"
                           />
                         </button>
-                        <span className="inline-flex items-center rounded-md bg-red-50 px-1 py-0 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                          10
-                        </span>
+                        {items.length>0 && <span className="inline-flex items-center rounded-md bg-red-50 px-1 py-0 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                          {items.length}
+                        </span>}
                       </Link>
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -189,9 +192,9 @@ export default function Navbar({ children }) {
                           aria-hidden="true"
                         />
                       </button>
-                      <span className="inline-flex items-center rounded-md bg-red-50 px-1 py-0 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                        10
-                      </span>
+                      {items.length>0 &&<span className="inline-flex items-center rounded-md bg-red-50 px-1 py-0 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                        {items.length}
+                      </span>}
                     </Link>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
