@@ -13,7 +13,8 @@ const SignUp = ()=>{
     const userData={
       name:data.name,
       email:data.email,
-      password:data.password
+      password:data.password,
+      addresses:[]
     }
     dispatch(createUserAsync(userData));
   };
