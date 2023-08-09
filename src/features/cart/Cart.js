@@ -1,11 +1,11 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { useDispatch, useSelector } from "react-redux";
-import { selectitems, updateCartAsync } from "./cartSLice";
+import { selectitems, updateCartAsync,deleteItemFromCartAsync } from "./cartSLice";
 
 
 const Cart = () => {
@@ -14,11 +14,16 @@ const Cart = () => {
   const totalAmount = items.reduce((amount,item)=>item.price*item.quantity+amount,0);
   const totalItems = items.reduce((total,item)=>item.quantity+total,0);
   const dispatch = useDispatch();
-  const handleSelect = (e,item)=>{
+  const handleQuantity = (e,item)=>{
     dispatch(updateCartAsync({...item,quantity:+e.target.value}));
+  }
+  const handleRemove = (e,id)=>{
+    dispatch(deleteItemFromCartAsync(id));
   }
 
   return (
+    <>
+    {!items.length && <Navigate to="/" replace={true}></Navigate>}
     <Navbar>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="px-8 py-6 bg-white">
@@ -58,17 +63,18 @@ const Cart = () => {
                           Qty
                         </label>
 
-                        <select onChange={(e)=>handleSelect(e,item)}>
-                          <option id="1">1</option>
-                          <option id="2">2</option>
-                          <option id="3">3</option>
-                          <option id="4">4</option>
+                        <select onChange={(e)=>handleQuantity(e,item)} value={item.quantity}> 
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
                         </select>
                       </div>
 
                       <div className="flex">
                         <button
                           type="button"
+                          onClick={(e)=>handleRemove(e,item.id)}
                           className="font-medium text-indigo-600 hover:text-indigo-500"
                         >
                           <svg
@@ -131,6 +137,7 @@ const Cart = () => {
         </div>
       </div>
     </Navbar>
+    </>
   );
 };
 export default Cart;
