@@ -4,6 +4,7 @@ import { selectLoggedInUser } from "../features/auth/authSlice";
 import { getItemsByUserIdAsync } from "../features/cart/cartSLice";
 import { useEffect } from "react";
 import Navbar from "../features/navbar/Navbar";
+import { getLoggedInUserAsync } from "../features/user/userSlice";
 
 const HomePage = ()=>{
     const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const HomePage = ()=>{
       console.log(user)
       if(user!=null){
        dispatch(getItemsByUserIdAsync(user.id));
+       dispatch(getLoggedInUserAsync(user.id));
       }
     },[dispatch,user.id])
     return(

@@ -5,8 +5,8 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsByIdAsync, selectProductById } from "./productSlice";
-import { selectLoggedInUser } from "../auth/authSlice";
 import { addToCartAsync } from "../cart/cartSLice";
+import { selectUserInfo } from "../user/userSlice";
 
 const breadcrumbs = [
   { id: 1, name: "Men", href: "#" },
@@ -47,7 +47,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const product = useSelector(selectProductById)
   const params = useParams();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
 
   const handleCart = (e)=>{
     e.preventDefault();

@@ -11,6 +11,7 @@ import Protected from "./features/auth/components/Protected";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 import Order_SuccessPage from "./pages/Order_SuccessPage";
 import UserOrdersPage from "./pages/UserOrdersPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 
 const router = createBrowserRouter([
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
     element: (
       <Protected>
         <UserOrdersPage></UserOrdersPage>
+      </Protected>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <Protected>
+        <UserProfilePage></UserProfilePage>
       </Protected>
     ),
   },
