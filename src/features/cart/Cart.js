@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <>
     {!items.length && <Navigate to="/" replace={true}></Navigate>}
-    <Navbar>
+    
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="px-8 py-6 bg-white">
           <h1 className="py-3 text-4xl font-bold tracking-tight text-gray-900 border-b border-gray-200">
@@ -136,7 +136,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
-    </Navbar>
+  
     </>
   );
 };

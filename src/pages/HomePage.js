@@ -3,6 +3,7 @@ import ProductList from "../features/product/ProductList"
 import { selectLoggedInUser } from "../features/auth/authSlice";
 import { getItemsByUserIdAsync } from "../features/cart/cartSLice";
 import { useEffect } from "react";
+import Navbar from "../features/navbar/Navbar";
 
 const HomePage = ()=>{
     const dispatch = useDispatch();
@@ -14,7 +15,9 @@ const HomePage = ()=>{
       }
     },[dispatch,user.id])
     return(
+      <Navbar>
         <ProductList></ProductList>
+      </Navbar>
     )
 }
 export default HomePage

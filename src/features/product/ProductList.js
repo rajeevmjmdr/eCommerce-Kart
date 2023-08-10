@@ -108,7 +108,7 @@ export default function Product_list() {
   },[]);
 
   return (
-    <Navbar>
+    
       <>
         <div className="bg-white">
           <div>
@@ -211,7 +211,7 @@ export default function Product_list() {
           </div>
         </div>
       </>
-    </Navbar>
+ 
   );
 }
 

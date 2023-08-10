@@ -62,7 +62,6 @@ useEffect(()=>{
 },[dispatch,params])
 
   return (
-    <Navbar>
       <div className="bg-white">
        {product && <div className="pt-6">
           <nav aria-label="Breadcrumb">
@@ -355,7 +354,7 @@ useEffect(()=>{
         </div>
         }
       </div>
-    </Navbar>
+ 
   );
 };
 export default ProductDetail;

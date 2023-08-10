@@ -7,7 +7,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import Protected from "./features/auth/component/Protected";
+import Protected from "./features/auth/components/Protected";
+import PageNotFoundPage from "./pages/PageNotFoundPage";
+import Order_SuccessPage from "./pages/Order_SuccessPage";
+import UserOrdersPage from "./pages/UserOrdersPage";
+
 
 const router = createBrowserRouter([
   {
@@ -50,6 +54,28 @@ const router = createBrowserRouter([
       </Protected>
     ),
   },
+  {
+    path: "/order_success/:id",
+    element: (
+      <Protected>
+        <Order_SuccessPage></Order_SuccessPage>
+      </Protected>
+    ),
+  },
+  {
+    path: "/orders",
+    element: (
+      <Protected>
+        <UserOrdersPage></UserOrdersPage>
+      </Protected>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+        <PageNotFoundPage></PageNotFoundPage>
+    ),
+  }
 ]);
 function App() {
   return (
