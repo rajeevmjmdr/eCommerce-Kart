@@ -2343,7 +2343,7 @@
         {
           "name": "Rajeev Majumdar",
           "email": "raj@gmail.com",
-          "phone": "9999999999",
+          "phone": "9999999900",
           "country": "India",
           "street": "Nabapally",
           "city": "Bangalore",
@@ -2351,14 +2351,14 @@
           "pincode": "576776"
         },
         {
-          "name": "Shyam Kumar",
-          "email": "shyam@gmail.com",
-          "phone": "6666666664",
+          "name": "john wick",
+          "email": "john@gmail.com",
+          "phone": "7657766767",
           "country": "India",
-          "street": "syampur",
-          "city": "shampur",
-          "state": "bihar",
-          "pincode": "801030"
+          "street": "Engalnd",
+          "city": "johnwick",
+          "state": "john wick",
+          "pincode": "898789"
         }
       ],
       "id": 1
@@ -2385,31 +2385,22 @@
       "name": "Test",
       "email": "test@gmail.com",
       "password": "Test123!@#",
-      "addresses": [],
+      "addresses": [
+        {
+          "name": "Test John wick",
+          "email": "testJohn@gmail.com",
+          "phone": "6757657878",
+          "country": "India",
+          "street": "Test John wick ,Test John wick",
+          "city": "Test John wick",
+          "state": "Test John wick",
+          "pincode": "767666"
+        }
+      ],
       "id": 3
     }
   ],
   "cart": [
-    {
-      "title": "Royal Blue Premium Watch",
-      "description": "Men Silver Chain Royal Blue Premium Watch Latest Analog Watch",
-      "price": 50,
-      "discountPercentage": 2.56,
-      "rating": 4.89,
-      "stock": 142,
-      "brand": "SKMEI 9117",
-      "category": "mens-watches",
-      "thumbnail": "https://i.dummyjson.com/data/products/63/thumbnail.webp",
-      "images": [
-        "https://i.dummyjson.com/data/products/63/1.jpg",
-        "https://i.dummyjson.com/data/products/63/2.jpg",
-        "https://i.dummyjson.com/data/products/63/3.png",
-        "https://i.dummyjson.com/data/products/63/4.jpeg"
-      ],
-      "user": 3,
-      "quantity": 1,
-      "id": 10
-    },
     {
       "title": "half sleeves T shirts",
       "description": "Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands",
@@ -2758,6 +2749,149 @@
       "paymentMethod": "cash",
       "status": "Pending",
       "id": 5
+    },
+    {
+      "user": {
+        "name": "Rajeev",
+        "email": "raj@gmail.com",
+        "password": "Raj123!@#",
+        "addresses": [
+          {
+            "name": "Rajeev Majumdar",
+            "email": "raj@gmail.com",
+            "phone": "9999999900",
+            "country": "India",
+            "street": "Nabapally",
+            "city": "Bangalore",
+            "state": "karnataka",
+            "pincode": "576776"
+          },
+          {
+            "name": "john wick",
+            "email": "john@gmail.com",
+            "phone": "7657766767",
+            "country": "India",
+            "street": "Engalnd",
+            "city": "johnwick",
+            "state": "john wick",
+            "pincode": "898789"
+          }
+        ],
+        "id": 1
+      },
+      "items": [
+        {
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "user": 1,
+          "quantity": 1,
+          "id": 12
+        }
+      ],
+      "totalAmount": 499,
+      "totalItems": 1,
+      "selectedAddress": {
+        "name": "john wick",
+        "email": "john@gmail.com",
+        "phone": "7657766767",
+        "country": "India",
+        "street": "Engalnd",
+        "city": "johnwick",
+        "state": "john wick",
+        "pincode": "898789"
+      },
+      "paymentMethod": "cash",
+      "status": "Pending",
+      "id": 6
+    },
+    {
+      "user": {
+        "name": "Test",
+        "email": "test@gmail.com",
+        "password": "Test123!@#",
+        "addresses": [
+          {
+            "name": "Test John wick",
+            "email": "testJohn@gmail.com",
+            "phone": "6757657878",
+            "country": "India",
+            "street": "Test John wick ,Test John wick",
+            "city": "Test John wick",
+            "state": "Test John wick",
+            "pincode": "767666"
+          }
+        ],
+        "id": 3
+      },
+      "items": [
+        {
+          "title": "Royal Blue Premium Watch",
+          "description": "Men Silver Chain Royal Blue Premium Watch Latest Analog Watch",
+          "price": 50,
+          "discountPercentage": 2.56,
+          "rating": 4.89,
+          "stock": 142,
+          "brand": "SKMEI 9117",
+          "category": "mens-watches",
+          "thumbnail": "https://i.dummyjson.com/data/products/63/thumbnail.webp",
+          "images": [
+            "https://i.dummyjson.com/data/products/63/1.jpg",
+            "https://i.dummyjson.com/data/products/63/2.jpg",
+            "https://i.dummyjson.com/data/products/63/3.png",
+            "https://i.dummyjson.com/data/products/63/4.jpeg"
+          ],
+          "user": 3,
+          "quantity": 1,
+          "id": 10
+        },
+        {
+          "title": "half sleeves T shirts",
+          "description": "Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands",
+          "price": 23,
+          "discountPercentage": 12.76,
+          "rating": 4.26,
+          "stock": 132,
+          "brand": "Vintage Apparel",
+          "category": "mens-shirts",
+          "thumbnail": "https://i.dummyjson.com/data/products/51/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/51/1.png",
+            "https://i.dummyjson.com/data/products/51/2.jpg",
+            "https://i.dummyjson.com/data/products/51/3.jpg",
+            "https://i.dummyjson.com/data/products/51/thumbnail.jpg"
+          ],
+          "user": 3,
+          "quantity": 1,
+          "id": 11
+        }
+      ],
+      "totalAmount": 73,
+      "totalItems": 2,
+      "selectedAddress": {
+        "name": "Test John wick",
+        "email": "testJohn@gmail.com",
+        "phone": "6757657878",
+        "country": "India",
+        "street": "Test John wick ,Test John wick",
+        "city": "Test John wick",
+        "state": "Test John wick",
+        "pincode": "767666"
+      },
+      "paymentMethod": "cash",
+      "status": "Pending",
+      "id": 7
     }
   ]
 }
