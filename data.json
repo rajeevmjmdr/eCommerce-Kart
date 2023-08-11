@@ -2394,34 +2394,13 @@
           "street": "Test John wick ,Test John wick",
           "city": "Test John wick",
           "state": "Test John wick",
-          "pincode": "767666"
+          "pincode": "902345"
         }
       ],
       "id": 3
     }
   ],
-  "cart": [
-    {
-      "title": "half sleeves T shirts",
-      "description": "Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands",
-      "price": 23,
-      "discountPercentage": 12.76,
-      "rating": 4.26,
-      "stock": 132,
-      "brand": "Vintage Apparel",
-      "category": "mens-shirts",
-      "thumbnail": "https://i.dummyjson.com/data/products/51/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/51/1.png",
-        "https://i.dummyjson.com/data/products/51/2.jpg",
-        "https://i.dummyjson.com/data/products/51/3.jpg",
-        "https://i.dummyjson.com/data/products/51/thumbnail.jpg"
-      ],
-      "user": 3,
-      "quantity": 1,
-      "id": 11
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "user": {

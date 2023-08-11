@@ -12,6 +12,7 @@ import PageNotFoundPage from "./pages/PageNotFoundPage";
 import Order_SuccessPage from "./pages/Order_SuccessPage";
 import UserOrdersPage from "./pages/UserOrdersPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import Logout from "./features/auth/components/Logout";
 
 
 const router = createBrowserRouter([
@@ -76,6 +77,14 @@ const router = createBrowserRouter([
     element: (
       <Protected>
         <UserProfilePage></UserProfilePage>
+      </Protected>
+    ),
+  },
+  {
+    path: "/logout",
+    element: (
+      <Protected>
+        <Logout></Logout>
       </Protected>
     ),
   },

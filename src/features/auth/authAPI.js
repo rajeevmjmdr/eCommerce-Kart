@@ -31,3 +31,9 @@ export function createUser(userData) {
   });
   }
 
+  export function logoutUser(userId) {
+    return new Promise(async (resolve) =>{
+   // TODO: Resolve session from server 
+      resolve({status:'Success'})
+  });
+  }
