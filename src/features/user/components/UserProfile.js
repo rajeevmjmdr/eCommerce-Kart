@@ -60,9 +60,12 @@ export default function UserProfile() {
         <h1 className="py-3 text-3xl font-bold tracking-tight text-gray-500 border-b border-gray-200">
           Name: {user ? user.name : "New User"}
         </h1>
-        <h1 className="py-3 text-2xl font tracking-tight text-red-500">
+        <h1 className="py-3 text-2xl font-bold tracking-tight text-red-500">
           email: {user.email}
         </h1>
+        {user.role==='admin'?<h1 className="py-3 text-xl font-bold tracking-tight text-blue-500">
+          role: {user.role}
+        </h1>:<></>}
         <button
           type="button"
           onClick={()=>(setShowAddAddressForm(true),setSelectedEditIndex(-1),reset())}

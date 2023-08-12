@@ -8,14 +8,16 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectitems } from "../cart/cartSLice";
+import { selectLoggedInUser } from "../auth/authSlice";
 
-const user = {
-  name: "Rajeev",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
-const navigation = [{ name: "Dashboard", href: "#", current: true }];
+// const userold = {
+//   name: "Rajeev",
+//   email: "tom@example.com",
+//   imageUrl:
+//     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+// };
+const navigation = [{ name: "Admin", link: "/admin", admin: true },
+{ name: "Dashboard", link: "/", user: true }];
 const userNavigation = [
   { name: "My Profile", link: "/profile" },
   { name: "My Orders", link: "/orders" },
@@ -28,6 +30,10 @@ function classNames(...classes) {
 
 export default function Navbar({ children }) {
   const items = useSelector(selectitems);
+  const loggeduser = useSelector(selectLoggedInUser);
+const user = {...loggeduser, imageUrl:
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+};
   return (
     
       <div className="min-h-full">
@@ -48,10 +54,10 @@ export default function Navbar({ children }) {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item) => (
-                          <a
+                        {navigation.map((item) => (item[user.role] ?
+                          <Link
                             key={item.name}
-                            href={item.href}
+                            to={item.link}
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white"
@@ -61,8 +67,8 @@ export default function Navbar({ children }) {
                             aria-current={item.current ? "page" : undefined}
                           >
                             {item.name}
-                          </a>
-                        ))}
+                          </Link>
+                        :null))}
                       </div>
                     </div>
                   </div>
@@ -147,11 +153,11 @@ export default function Navbar({ children }) {
 
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                  {navigation.map((item) => (
+                  {navigation.map((item) => (item[user.role] ?
+                    <Link to={item.link}> 
                     <Disclosure.Button
                       key={item.name}
                       as="a"
-                      href={item.href}
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
@@ -162,7 +168,8 @@ export default function Navbar({ children }) {
                     >
                       {item.name}
                     </Disclosure.Button>
-                  ))}
+                    </Link>
+                  :null))}
                 </div>
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">

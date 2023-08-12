@@ -14,7 +14,8 @@ const SignUp = ()=>{
       name:data.name,
       email:data.email,
       password:data.password,
-      addresses:[]
+      addresses:[],
+      role:'user' // TODO: role can be admmin given through backend
     }
     dispatch(createUserAsync(userData));
   };
