@@ -4,7 +4,7 @@ import { RadioGroup } from "@headlessui/react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsByIdAsync, selectProductById } from "./productSlice";
+import { getProductByIdAsync, selectProductById } from "./productSlice";
 import { addToCartAsync } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
 
@@ -58,7 +58,7 @@ const ProductDetail = () => {
   
 useEffect(()=>{
   console.log(params);
-  dispatch(getProductsByIdAsync(params.id));
+  dispatch(getProductByIdAsync(params.id));
 },[dispatch,params])
 
   return (

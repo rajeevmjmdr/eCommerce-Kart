@@ -3,7 +3,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsByIdAsync, selectProductById } from "../product/productSlice";
+import { getProductByIdAsync, selectProductById } from "../product/productSlice";
 import { addToCartAsync } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
 
@@ -57,7 +57,7 @@ const AdminProductDetail = () => {
   
 useEffect(()=>{
   console.log(params);
-  dispatch(getProductsByIdAsync(params.id));
+  dispatch(getProductByIdAsync(params.id));
 },[dispatch,params])
 
   return (

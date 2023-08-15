@@ -405,11 +405,11 @@ function ProductGrid({filters,products }) {
                 key={product.id}
                 className="group relative border-solid border-2 p-2"
               >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                   <img
                     src={product.thumbnail}
                     alt={product.thumbnail}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    className="h-full w-full object-cover object-center lg:h-60 lg:w-full"
                   />
                 </div>
                 <div className="mt-4 flex justify-between">

@@ -278,7 +278,7 @@ const Checkout = () => {
                     </label>
                     <div className="mt-2">
                       <input
-                        type="text"
+                        type="number"
                         id="pincode"
                         {...register("pincode", {
                           required: "pincode is required",
