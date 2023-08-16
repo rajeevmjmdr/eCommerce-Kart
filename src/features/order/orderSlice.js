@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createOrder } from './orderAPI';
+import { createOrder, getAllOrders, updateOrder } from './orderAPI';
 
 const initialState = {
   orders: [],
   status: 'idle',
-  currentOrder:null
+  currentOrder:null,
+  totalOrders:0
 };
 
 export const createOrderAsync = createAsyncThunk(
@@ -15,6 +16,25 @@ export const createOrderAsync = createAsyncThunk(
     return response.data;
   }
 );
+
+export const getAllOrdersAsync = createAsyncThunk(
+  'order/getAllOrders',
+  async ({pagination}) => {
+    const response = await getAllOrders({pagination});
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+export const updateOrderAsync = createAsyncThunk(
+  'order/updateOrder',
+  async (order) => {
+    const response = await updateOrder(order);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
 
 export const orderSlice = createSlice({
   name: 'order',
@@ -36,6 +56,22 @@ export const orderSlice = createSlice({
         state.status = 'idle';
         state.orders.push(action.payload);
         state.currentOrder = action.payload;
+      })
+      .addCase(getAllOrdersAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getAllOrdersAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.orders = action.payload.orders;
+        state.totalOrders = action.payload.totalOrders;
+      })
+      .addCase(updateOrderAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateOrderAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        const index = state.orders.findIndex(order=> order.id===action.payload.id)
+        state.orders[index] = action.payload;
       });
   },
 });
@@ -45,5 +81,7 @@ export const { resetOrder} = orderSlice.actions;
 // The function below is called a selector and allows us to select a value from
 // the state.
 export const selectCurrentOrder = (state) => state.order.currentOrder;
+export const selectTotalOrder = (state) => state.order.totalOrders;
+export const selectAllOrders = (state) => state.order.orders;
 
 export default orderSlice.reducer;

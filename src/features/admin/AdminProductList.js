@@ -24,7 +24,7 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { Link } from "react-router-dom";
-import { ITEMS_PER_PAGE } from "../../app/const";
+import { ITEMS_PER_PAGE, discountedPrice } from "../../app/const";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -407,7 +407,7 @@ function ProductGrid({ filters, products }) {
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {products.map((product) => (
             <div className="mb-5">
-              <Link to={`/product_detail/${product.id}`}>
+              <Link to={`/admin/product_detail/${product.id}`}>
                 <div
                   key={product.id}
                   className="group relative border-solid border-2 p-2"
@@ -438,9 +438,7 @@ function ProductGrid({ filters, products }) {
                     <div>
                       <p className="text-sm font-medium text-green-600">
                         $
-                        {Math.round(
-                          product.price * (1 - product.discountPercentage / 100)
-                        )}
+                        {discountedPrice(product)}
                       </p>
                       <p className="text-sm font-medium line-through text-gray-500">
                         ${product.price}

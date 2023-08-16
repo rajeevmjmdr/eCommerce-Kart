@@ -24,7 +24,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Navbar from "../navbar/Navbar";
 import { Link } from "react-router-dom";
-import { ITEMS_PER_PAGE } from "../../app/const";
+import { ITEMS_PER_PAGE, discountedPrice } from "../../app/const";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -428,9 +428,7 @@ function ProductGrid({filters,products }) {
                   <div>
                     <p className="text-sm font-medium text-green-600">
                       $
-                      {Math.round(
-                        product.price * (1 - product.discountPercentage / 100)
-                      )}
+                      {discountedPrice(product)}
                     </p>
                     <p className="text-sm font-medium line-through text-gray-500">
                       ${product.price}

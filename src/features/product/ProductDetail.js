@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductByIdAsync, selectProductById } from "./productSlice";
 import { addToCartAsync } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
+import { discountedPrice } from "../../app/const";
 
 const breadcrumbs = [
   { id: 1, name: "Men", href: "#" },
@@ -45,25 +46,26 @@ const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const dispatch = useDispatch();
-  const product = useSelector(selectProductById)
+  const product = useSelector(selectProductById);
   const params = useParams();
   const user = useSelector(selectUserInfo);
 
-  const handleCart = (e)=>{
+  const handleCart = (e) => {
     e.preventDefault();
-    const newProduct = {...product,user:user.id,quantity:1};
+    const newProduct = { ...product, user: user.id, quantity: 1 };
     delete newProduct.id;
     dispatch(addToCartAsync(newProduct));
-  }
-  
-useEffect(()=>{
-  console.log(params);
-  dispatch(getProductByIdAsync(params.id));
-},[dispatch,params])
+  };
+
+  useEffect(() => {
+    console.log(params);
+    dispatch(getProductByIdAsync(params.id));
+  }, [dispatch, params]);
 
   return (
-      <div className="bg-white">
-       {product && <div className="pt-6">
+    <div className="bg-white">
+      {product && (
+        <div className="pt-6">
           <nav aria-label="Breadcrumb">
             <ol
               role="list"
@@ -94,7 +96,6 @@ useEffect(()=>{
               ))} */}
               <li className="text-sm">
                 <a
-                 
                   aria-current="page"
                   className="font-medium text-gray-500 hover:text-gray-600"
                 >
@@ -149,10 +150,12 @@ useEffect(()=>{
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+              <p className="text-3xl tracking-tight text-green-600">
+                ${discountedPrice(product)}
               </p>
-
+              <p className="text-2xl font-medium line-through text-gray-500">
+                ${product.price}
+              </p>
               {/* Reviews */}
               <div className="mt-6">
                 <h3 className="sr-only">Reviews</h3>
@@ -304,13 +307,13 @@ useEffect(()=>{
                     </div>
                   </RadioGroup>
                 </div>
-               
-                  <button
-                    onClick={handleCart}
-                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  >
-                    Add to Cart
-                  </button>
+
+                <button
+                  onClick={handleCart}
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Add to Cart
+                </button>
               </form>
             </div>
 
@@ -352,9 +355,8 @@ useEffect(()=>{
             </div>
           </div>
         </div>
-        }
-      </div>
- 
+      )}
+    </div>
   );
 };
 export default ProductDetail;

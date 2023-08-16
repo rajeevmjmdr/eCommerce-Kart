@@ -16,7 +16,9 @@ import { selectLoggedInUser } from "../auth/authSlice";
 //   imageUrl:
 //     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 // };
-const navigation = [{ name: "Admin", link: "/admin", admin: true },
+const navigation = [
+{ name: "Admin", link: "/admin", admin: true },
+{ name: "Orders", link: "/admin/orders", admin: true },
 { name: "Dashboard", link: "/", user: true }];
 const userNavigation = [
   { name: "My Profile", link: "/profile" },
@@ -230,7 +232,7 @@ const user = {...loggeduser, imageUrl:
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-20">
+          <div className="mx-auto max-w-8xl py-6 sm:px-6 lg:px-20">
             {children}
           </div>
         </main>

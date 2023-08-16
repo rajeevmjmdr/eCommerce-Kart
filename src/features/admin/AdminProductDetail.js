@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductByIdAsync, selectProductById } from "../product/productSlice";
 import { addToCartAsync } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
+import { discountedPrice } from "../../app/const";
 
 const breadcrumbs = [
   { id: 1, name: "Men", href: "#" },
@@ -148,8 +149,11 @@ useEffect(()=>{
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+              <p className="text-3xl tracking-tight text-green-600">
+                ${discountedPrice(product)}
+              </p>
+              <p className="text-2xl font-medium line-through text-gray-500">
+                ${product.price}
               </p>
 
               {/* Reviews */}
