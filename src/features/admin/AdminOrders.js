@@ -10,14 +10,18 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllOrdersAsync,
   selectAllOrders,
+  selectOrdersStatus,
   selectTotalOrder,
   updateOrderAsync,
 } from "../order/orderSlice";
+import { Blocks } from "react-loader-spinner";
+
 const AdminOrders = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const totalOrders = useSelector(selectTotalOrder);
   const orders = useSelector(selectAllOrders);
+  const status = useSelector(selectOrdersStatus);
   const handlerPage = (page) => {
     setPage(page);
     console.log(page);
@@ -45,13 +49,13 @@ const AdminOrders = () => {
   };
   const changeColor = (status) => {
     switch (status) {
-      case 'pending':
+      case "pending":
         return `text-purple-500 rounded-full gap-x-2 bg-purple-100/60 dark:bg-gray-800`;
-      case 'dispatched':
+      case "dispatched":
         return `text-yellow-500 rounded-full gap-x-2 bg-yellow-100/60 dark:bg-gray-800`;
-      case 'delieverd':
+      case "delieverd":
         return `text-green-500 rounded-full gap-x-2 bg-green-100/60 dark:bg-gray-800`;
-      case 'cancelled':
+      case "cancelled":
         return `text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800`;
 
       default:
@@ -154,7 +158,17 @@ const AdminOrders = () => {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                      {orders &&
+                      {status === "loading" ? (
+                        <Blocks
+                          visible={true}
+                          height="80"
+                          width="80"
+                          ariaLabel="blocks-loading"
+                          wrapperStyle={{}}
+                          wrapperClass="blocks-wrapper"
+                        />
+                      ) : (
+                        orders &&
                         orders.map((order) => (
                           <tr>
                             <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
@@ -257,7 +271,8 @@ const AdminOrders = () => {
                               ></EyeIcon>
                             </td>
                           </tr>
-                        ))}
+                        ))
+                      )}
                     </tbody>
                   </table>
                 </div>

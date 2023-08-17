@@ -1,11 +1,14 @@
-import ProductList from "../features/product/ProductList"
+import ProductList from "../features/product/ProductList";
 import Navbar from "../features/navbar/Navbar";
-
-const HomePage = ()=>{
-    return(
+import Footer from "../features/common/Footer";
+const HomePage = () => {
+  return (
+    <>
       <Navbar>
         <ProductList></ProductList>
       </Navbar>
-    )
-}
-export default HomePage
+      <Footer></Footer>
+    </>
+  );
+};
+export default HomePage;

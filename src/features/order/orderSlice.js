@@ -83,5 +83,6 @@ export const { resetOrder} = orderSlice.actions;
 export const selectCurrentOrder = (state) => state.order.currentOrder;
 export const selectTotalOrder = (state) => state.order.totalOrders;
 export const selectAllOrders = (state) => state.order.orders;
+export const selectOrdersStatus = (state) => state.order.status;
 
 export default orderSlice.reducer;

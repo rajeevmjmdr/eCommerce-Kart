@@ -9,6 +9,7 @@ import {
   selectAllBrands,
   getAllCategoriesAsync,
   getAllBrandsAsync,
+  selectProductStatus,
 } from "../product/productSlice";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -25,6 +26,7 @@ import {
 
 import { Link } from "react-router-dom";
 import { ITEMS_PER_PAGE, discountedPrice } from "../../app/const";
+import { Blocks } from "react-loader-spinner";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -42,6 +44,7 @@ export default function AdminProductList() {
   const categories = useSelector(selectAllCategories);
   const brands = useSelector(selectAllBrands);
   const totalItems = useSelector(selectTotalItems);
+  const status = useSelector(selectProductStatus);
   const dispatch = useDispatch();
   const filters = [
     {
@@ -193,6 +196,7 @@ export default function AdminProductList() {
                 <ProductGrid
                   filters={filters}
                   products={products}
+                  status={status}
                 ></ProductGrid>
               </div>
             </section>
@@ -389,7 +393,7 @@ function DesktopFilter({ filters, handleFilter }) {
   );
 }
 
-function ProductGrid({ filters, products }) {
+function ProductGrid({ filters, products,status }) {
   return (
     <div className="lg:col-span-3">
       <div className="flex px-3">
@@ -405,58 +409,68 @@ function ProductGrid({ filters, products }) {
       </div>
       <div className="mx-auto max-w-2xl px-4 py-2 sm:px-6 sm:py-2 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-          {products.map((product) => (
-            <div className="mb-5">
-              <Link to={`/admin/product_detail/${product.id}`}>
-                <div
-                  key={product.id}
-                  className="group relative border-solid border-2 p-2"
-                >
-                  <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.thumbnail}
-                      className="h-full w-full object-cover object-center lg:h-60 lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
-                        <a href={product.thumbnail}>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {product.title}
-                        </a>
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        <StarIcon className=" inline w-6 h-6 "></StarIcon>
-                        <span className="align-bottom">{product.rating}</span>
-                      </p>
+          {status === "loading" ? (
+            <Blocks
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+            />
+          ) : (
+            products.map((product) => (
+              <div className="mb-5">
+                <Link to={`/admin/product_detail/${product.id}`}>
+                  <div
+                    key={product.id}
+                    className="group relative border-solid border-2 p-2"
+                  >
+                    <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                      <img
+                        src={product.thumbnail}
+                        alt={product.thumbnail}
+                        className="h-full w-full object-cover object-center lg:h-60 lg:w-full"
+                      />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-green-600">
-                        $
-                        {discountedPrice(product)}
-                      </p>
-                      <p className="text-sm font-medium line-through text-gray-500">
-                        ${product.price}
-                      </p>
+                    <div className="mt-4 flex justify-between">
+                      <div>
+                        <h3 className="text-sm text-gray-700">
+                          <a href={product.thumbnail}>
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                            />
+                            {product.title}
+                          </a>
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">
+                          <StarIcon className=" inline w-6 h-6 "></StarIcon>
+                          <span className="align-bottom">{product.rating}</span>
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-green-600">
+                          ${discountedPrice(product)}
+                        </p>
+                        <p className="text-sm font-medium line-through text-gray-500">
+                          ${product.price}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-              <Link to={`/admin/product_form/edit/${product.id}`}>
-              <button
-                type="button"
-                className="rounded-md bg-indigo-600 mt-2 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Edit Product
-              </button>
-              </Link>
-            </div>
-          ))}
+                </Link>
+                <Link to={`/admin/product_form/edit/${product.id}`}>
+                  <button
+                    type="button"
+                    className="rounded-md bg-indigo-600 mt-2 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Edit Product
+                  </button>
+                </Link>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>
