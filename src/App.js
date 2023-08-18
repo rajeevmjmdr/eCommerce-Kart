@@ -23,8 +23,8 @@ import { getItemsByUserIdAsync } from "./features/cart/cartSLice";
 import { getLoggedInUserAsync } from "./features/user/userSlice";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
-
-
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 const router = createBrowserRouter([
   {
@@ -141,31 +141,32 @@ const router = createBrowserRouter([
   },
   {
     path: "/forgot_password",
-    element: (
-      
-        <ForgotPasswordPage></ForgotPasswordPage>
-      
-    ),
+    element: <ForgotPasswordPage></ForgotPasswordPage>,
   },
   {
     path: "*",
-    element: (
-        <PageNotFoundPage></PageNotFoundPage>
-    ),
-  }
+    element: <PageNotFoundPage></PageNotFoundPage>,
+  },
 ]);
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
-  useEffect(()=>{
-    if(user!=null){
-     dispatch(getItemsByUserIdAsync(user.id));
-     dispatch(getLoggedInUserAsync(user.id));
+  useEffect(() => {
+    if (user != null) {
+      dispatch(getItemsByUserIdAsync(user.id));
+      dispatch(getLoggedInUserAsync(user.id));
     }
-  },[dispatch,user])
+  }, [dispatch, user]);
+
+  const options = {
+    timeout: 3000,
+    position: positions.MIDDLE,
+  };
   return (
     <div>
-      <RouterProvider router={router} />
+      <Provider template={AlertTemplate} {...options}>
+        <RouterProvider router={router} />
+      </Provider>
     </div>
   );
 }

@@ -13,6 +13,7 @@ import { addToCartAsync, selectitems } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
 import { discountedPrice } from "../../app/const";
 import { Blocks } from "react-loader-spinner";
+import { useAlert } from 'react-alert';
 
 const breadcrumbs = [
   { id: 1, name: "Men", href: "#" },
@@ -56,6 +57,7 @@ const ProductDetail = () => {
   const user = useSelector(selectUserInfo);
   const status = useSelector(selectProductStatus);
   const items = useSelector(selectitems);
+  const alert = useAlert();
 
   const handleCart = (e) => {
     e.preventDefault();
@@ -64,7 +66,7 @@ const ProductDetail = () => {
       delete newProduct.id;
       dispatch(addToCartAsync(newProduct));
     } else {
-      alert("Product already added");
+      alert.show("Product already added");
     }
   };
 

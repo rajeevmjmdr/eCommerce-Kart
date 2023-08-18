@@ -14,11 +14,13 @@ import {
 import { discountedPrice } from "../../app/const";
 import { Blocks } from "react-loader-spinner";
 import Modal from "../common/Modal";
+import { useAlert } from 'react-alert';
 
 const Cart = () => {
   const [open, setOpen] = useState(true);
   const [openModal, setOpenModal] = useState(-1);
   const items = useSelector(selectitems);
+  const alert = useAlert();
   const totalAmount = items.reduce(
     (amount, item) => discountedPrice(item) * item.quantity + amount,
     0
@@ -31,6 +33,9 @@ const Cart = () => {
   };
   const handleRemove = (e, id) => {
     dispatch(deleteItemFromCartAsync(id));
+    alert.success('Item Deleted from Cart', {
+      timeout: 2000
+    })
   };
 
   return (

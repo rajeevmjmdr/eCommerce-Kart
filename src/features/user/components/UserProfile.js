@@ -4,11 +4,13 @@ import { TrashIcon, PencilSquareIcon ,PlusIcon} from "@heroicons/react/20/solid"
 import { selectUserInfo, updateUserAsync } from "../userSlice";
 import { useForm } from "react-hook-form";
 import Modal from "../../common/Modal";
+import { useAlert } from 'react-alert';
 
 export default function UserProfile() {
   const [openModal, setOpenModal] = useState(-1);
   const dispatch = useDispatch();
   const user = useSelector(selectUserInfo);
+  const alert = useAlert();
   const {
     register,
     reset,
@@ -29,6 +31,9 @@ export default function UserProfile() {
     newUser.addresses.splice(index, 1, addressUpdate);
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
+    alert.success('User Address Updated', {
+      timeout: 2000
+    })
   };
   const handleEditForm = (index) => {
     setSelectedEditIndex(index);
@@ -54,6 +59,9 @@ export default function UserProfile() {
     dispatch(updateUserAsync(newUser));
     reset();
     setShowAddAddressForm(false);
+    alert.success('New Address Added', {
+      timeout: 2000
+    })
   };
 
   return (

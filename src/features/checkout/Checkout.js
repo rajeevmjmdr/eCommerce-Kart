@@ -12,6 +12,7 @@ import { selectUserInfo, updateUserAsync } from "../user/userSlice";
 import { discountedPrice } from "../../app/const";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import Modal from "../common/Modal";
+import { useAlert } from 'react-alert';
 
 const Checkout = () => {
   const [open, setOpen] = useState(true);
@@ -34,6 +35,7 @@ const Checkout = () => {
   const currentOrder = useSelector(selectCurrentOrder);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
+  const alert = useAlert();
 
   const handleQuantity = (e, item) => {
     dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
@@ -47,6 +49,9 @@ const Checkout = () => {
     dispatch(
       updateUserAsync({ ...user, addresses: [...user.addresses, data] })
     );
+    alert.success('Address Added', {
+      timeout: 2000
+    })
     reset();
   };
 

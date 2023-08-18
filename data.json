@@ -42,7 +42,7 @@
       "id": 3,
       "title": "Samsung Universe 9",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
+      "price": 1250,
       "discountPercentage": 15.46,
       "rating": 4.09,
       "stock": 36,
@@ -50,7 +50,10 @@
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
+        "https://i.dummyjson.com/data/products/3/1.jpg",
+        "https://i.dummyjson.com/data/products/3/1.jpg",
+        "https://i.dummyjson.com/data/products/3/1.jpg",
+        "https://i.dummyjson.com/data/products/3/thumbnail.jpg"
       ]
     },
     {
@@ -2430,7 +2433,7 @@
         {
           "name": "Test John wick",
           "email": "testJohn@gmail.com",
-          "phone": "6757657878",
+          "phone": "6757657801",
           "country": "India",
           "street": "Test John wick ,Test John wick",
           "city": "Test John wick",
@@ -2438,14 +2441,24 @@
           "pincode": "902345"
         },
         {
-          "name": "TestTest TestTest",
-          "email": "ttesttesttestesttesttest@gmail.com",
-          "phone": "5657567676",
+          "name": "Test Neo",
+          "email": "testneo@gmail.com",
+          "phone": "5865765700",
           "country": "India",
-          "street": "ttesttesttestesttesttest, ttesttesttestesttesttest,ttesttesttestesttesttest",
-          "city": "Cityttesttesttestesttesttest",
-          "state": "Statettesttesttestesttesttest",
-          "pincode": "56756"
+          "street": "Street address Test Neo",
+          "city": "CityTest Neo",
+          "state": "State Test Neo",
+          "pincode": "676577"
+        },
+        {
+          "name": "TestNewNew",
+          "email": "TestNewNew@gmail.com",
+          "phone": "7676766766",
+          "country": "India",
+          "street": "TestNewNew Street address",
+          "city": "TestNewNew city",
+          "state": "TestNewNew ",
+          "pincode": "546557"
         }
       ],
       "id": 3
@@ -2459,50 +2472,7 @@
       "id": 4
     }
   ],
-  "cart": [
-    {
-      "title": "MacBook Pro",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": 1749,
-      "discountPercentage": 11.02,
-      "rating": 4.57,
-      "stock": 83,
-      "brand": "Apple",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-      "images": [
-        "https://i.dummyjson.com/data/products/6/1.png",
-        "https://i.dummyjson.com/data/products/6/2.jpg",
-        "https://i.dummyjson.com/data/products/6/3.png",
-        "https://i.dummyjson.com/data/products/6/4.jpg"
-      ],
-      "productId": 6,
-      "user": 3,
-      "quantity": 1,
-      "id": 2
-    },
-    {
-      "title": "HP Pavilion 15-DK1056WM",
-      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-      "price": 1099,
-      "discountPercentage": 6.18,
-      "rating": 4.43,
-      "stock": 89,
-      "brand": "HP Pavilion",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-      "images": [
-        "https://i.dummyjson.com/data/products/10/1.jpg",
-        "https://i.dummyjson.com/data/products/10/2.jpg",
-        "https://i.dummyjson.com/data/products/10/3.jpg",
-        "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
-      ],
-      "productId": 10,
-      "user": 3,
-      "quantity": 1,
-      "id": 3
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "user": {
@@ -2916,6 +2886,74 @@
       "paymentMethod": "card",
       "status": "Pending",
       "id": 6
+    },
+    {
+      "user": {
+        "name": "Test",
+        "email": "test@gmail.com",
+        "password": "Test123!@#",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Test John wick",
+            "email": "testJohn@gmail.com",
+            "phone": "6757657878",
+            "country": "India",
+            "street": "Test John wick ,Test John wick",
+            "city": "Test John wick",
+            "state": "Test John wick",
+            "pincode": "902345"
+          },
+          {
+            "name": "Test Neo",
+            "email": "testneo@gmail.com",
+            "phone": "5865765765",
+            "country": "India",
+            "street": "Street address Test Neo",
+            "city": "CityTest Neo",
+            "state": "State Test Neo",
+            "pincode": "676577"
+          }
+        ],
+        "id": 3
+      },
+      "items": [
+        {
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "productId": 5,
+          "user": 3,
+          "quantity": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 892,
+      "totalItems": 2,
+      "selectedAddress": {
+        "name": "Test Neo",
+        "email": "testneo@gmail.com",
+        "phone": "5865765765",
+        "country": "India",
+        "street": "Street address Test Neo",
+        "city": "CityTest Neo",
+        "state": "State Test Neo",
+        "pincode": "676577"
+      },
+      "paymentMethod": "card",
+      "status": "Pending",
+      "id": 7
     }
   ]
 }
