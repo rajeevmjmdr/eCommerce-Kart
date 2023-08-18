@@ -393,7 +393,7 @@ function DesktopFilter({ filters, handleFilter }) {
   );
 }
 
-function ProductGrid({ filters, products,status }) {
+function ProductGrid({ filters, products, status }) {
   return (
     <div className="lg:col-span-3">
       <div className="flex px-3">
@@ -458,6 +458,16 @@ function ProductGrid({ filters, products,status }) {
                         </p>
                       </div>
                     </div>
+                    {product.deleted ? (
+                      <p className="text-sm font-medium text-red-500">
+                       Product Deleted
+                      </p>
+                    ) : null}
+                    {product.stock <=0 ? (
+                      <p className="text-sm font-medium text-red-500">
+                       Out of Stock
+                      </p>
+                    ) : null}
                   </div>
                 </Link>
                 <Link to={`/admin/product_form/edit/${product.id}`}>

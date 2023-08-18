@@ -8,6 +8,7 @@ export function getAllProducts() {
 });
 }
 // TODO : multiple filter
+//TODO: filter deleted prodicts from server
 export function getProductsByFilter({filter,sort,pagination}) {
   let queryString='';
   for(let key in filter){

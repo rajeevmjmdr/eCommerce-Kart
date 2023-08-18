@@ -13,9 +13,11 @@ import {
 } from "./cartSLice";
 import { discountedPrice } from "../../app/const";
 import { Blocks } from "react-loader-spinner";
+import Modal from "../common/Modal";
 
 const Cart = () => {
   const [open, setOpen] = useState(true);
+  const [openModal, setOpenModal] = useState(-1);
   const items = useSelector(selectitems);
   const totalAmount = items.reduce(
     (amount, item) => discountedPrice(item) * item.quantity + amount,
@@ -95,9 +97,18 @@ const Cart = () => {
                         </div>
 
                         <div className="flex">
+                          <Modal
+                            title={`Delete : ${item.title}`}
+                            message="Do you want to delete this item ?"
+                            dangerOption="Delete"
+                            cancelOption="Cancel"
+                            setModal={openModal === item.id}
+                            dangerAction={(e) => handleRemove(e, item.id)}
+                            cancelAction={(e) => setOpenModal(-1)}
+                          ></Modal>
                           <button
                             type="button"
-                            onClick={(e) => handleRemove(e, item.id)}
+                            onClick={(e) => setOpenModal(item.id)}
                             className="font-medium  "
                           >
                             <TrashIcon className="w-6 h-6 text-red-500 hover:text-red-400"></TrashIcon>

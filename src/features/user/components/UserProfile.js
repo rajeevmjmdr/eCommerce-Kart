@@ -3,8 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { TrashIcon, PencilSquareIcon ,PlusIcon} from "@heroicons/react/20/solid";
 import { selectUserInfo, updateUserAsync } from "../userSlice";
 import { useForm } from "react-hook-form";
+import Modal from "../../common/Modal";
 
 export default function UserProfile() {
+  const [openModal, setOpenModal] = useState(-1);
   const dispatch = useDispatch();
   const user = useSelector(selectUserInfo);
   const {
@@ -567,9 +569,18 @@ export default function UserProfile() {
                       >
                         <PencilSquareIcon className="h-6 w-6 text-blue-500" />
                       </button>{" "}
+                      <Modal
+                            title={`Delete Address: ${address.name}`}
+                            message="Do you want to delete this item ?"
+                            dangerOption="Delete"
+                            cancelOption="Cancel"
+                            setModal={openModal === index}
+                            dangerAction={(e) => handleRemove(e, index)}
+                            cancelAction={(e) => setOpenModal(-1)}
+                          ></Modal>
                       <button
                         type="button"
-                        onClick={(e) => handleRemove(e, index)}
+                        onClick={(e) => setOpenModal(index)}
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
                         <TrashIcon className="h-6 w-6 text-red-500" />
