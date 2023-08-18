@@ -4,6 +4,7 @@ import { Link, Navigate, useParams} from "react-router-dom";
 import { resetCartAsync } from "../features/cart/cartSLice";
 import { resetOrder } from "../features/order/orderSlice";
 import { selectUserInfo } from "../features/user/userSlice";
+import Footer from "../features/common/Footer";
 export default function Order_SuccessPage() {
   const params = useParams();
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export default function Order_SuccessPage() {
           </div>
         </div>
       </main>
+      <Footer></Footer>
     </>
   )
 }
