@@ -4,8 +4,12 @@ import { RadioGroup } from "@headlessui/react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductByIdAsync, selectProductById, selectProductStatus } from "./productSlice";
-import { addToCartAsync } from "../cart/cartSLice";
+import {
+  getProductByIdAsync,
+  selectProductById,
+  selectProductStatus,
+} from "./productSlice";
+import { addToCartAsync, selectitems } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
 import { discountedPrice } from "../../app/const";
 import { Blocks } from "react-loader-spinner";
@@ -51,12 +55,17 @@ const ProductDetail = () => {
   const params = useParams();
   const user = useSelector(selectUserInfo);
   const status = useSelector(selectProductStatus);
+  const items = useSelector(selectitems);
 
   const handleCart = (e) => {
     e.preventDefault();
-    const newProduct = { ...product, user: user.id, quantity: 1 };
-    delete newProduct.id;
-    dispatch(addToCartAsync(newProduct));
+    if (items.findIndex((item) => item.productId === product.id) < 0) {
+      const newProduct = { ...product, productId:product.id, user: user.id, quantity: 1 };
+      delete newProduct.id;
+      dispatch(addToCartAsync(newProduct));
+    } else {
+      alert("Product already added");
+    }
   };
 
   useEffect(() => {

@@ -204,7 +204,7 @@ const AdminOrders = () => {
                             </td>
                             <td className="text-sm whitespace-nowrap flex justify-between py-5">
                               <div className="flex  ">
-                                <div className="min-w-0 flex-auto ">
+                                <div className="min-w-0 flex-auto border-r px-2">
                                   <p className="text-sm font-semibold leading-6 text-gray-900">
                                     {order.selectedAddress.name}
                                   </p>
@@ -216,11 +216,14 @@ const AdminOrders = () => {
                                   </p>
                                 </div>
                               </div>
-                              <div className="hidden sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm leading-6 text-gray-900">
+                              <div className="hidden sm:flex sm:flex-col sm:items-start px-2 flex-auto">
+                               
+                                <p className="w-10 text-sm leading-6 text-gray-900 ">
                                   {order.selectedAddress.street}
                                 </p>
-                                <div className="mt-1 flex items-center gap-x-1.5">
+                               
+ 
+                                <div className="mt-1 items-center gap-x-1.5">
                                   <p className="text-xs leading-5 text-gray-500">
                                     {order.selectedAddress.city}
                                   </p>

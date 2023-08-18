@@ -2436,6 +2436,16 @@
           "city": "Test John wick",
           "state": "Test John wick",
           "pincode": "902345"
+        },
+        {
+          "name": "TestTest TestTest",
+          "email": "ttesttesttestesttesttest@gmail.com",
+          "phone": "5657567676",
+          "country": "India",
+          "street": "ttesttesttestesttesttest, ttesttesttestesttesttest,ttesttesttestesttesttest",
+          "city": "Cityttesttesttestesttesttest",
+          "state": "Statettesttesttestesttesttest",
+          "pincode": "56756"
         }
       ],
       "id": 3
@@ -2449,7 +2459,50 @@
       "id": 4
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "MacBook Pro",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "price": 1749,
+      "discountPercentage": 11.02,
+      "rating": 4.57,
+      "stock": 83,
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/2.jpg",
+        "https://i.dummyjson.com/data/products/6/3.png",
+        "https://i.dummyjson.com/data/products/6/4.jpg"
+      ],
+      "productId": 6,
+      "user": 3,
+      "quantity": 1,
+      "id": 2
+    },
+    {
+      "title": "HP Pavilion 15-DK1056WM",
+      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+      "price": 1099,
+      "discountPercentage": 6.18,
+      "rating": 4.43,
+      "stock": 89,
+      "brand": "HP Pavilion",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+      "images": [
+        "https://i.dummyjson.com/data/products/10/1.jpg",
+        "https://i.dummyjson.com/data/products/10/2.jpg",
+        "https://i.dummyjson.com/data/products/10/3.jpg",
+        "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+      ],
+      "productId": 10,
+      "user": 3,
+      "quantity": 1,
+      "id": 3
+    }
+  ],
   "orders": [
     {
       "user": {
@@ -2798,6 +2851,71 @@
       "paymentMethod": "card",
       "status": "dispatched",
       "id": 5
+    },
+    {
+      "user": {
+        "name": "Test",
+        "email": "test@gmail.com",
+        "password": "Test123!@#",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Test John wick",
+            "email": "testJohn@gmail.com",
+            "phone": "6757657878",
+            "country": "India",
+            "street": "Test John wick ,Test John wick",
+            "city": "Test John wick",
+            "state": "Test John wick",
+            "pincode": "902345"
+          },
+          {
+            "name": "TestTest TestTest",
+            "email": "ttesttesttestesttesttest@gmail.com",
+            "phone": "5657567676",
+            "country": "India",
+            "street": "ttesttesttestesttesttest, ttesttesttestesttesttest,ttesttesttestesttesttest",
+            "city": "Cityttesttesttestesttesttest",
+            "state": "Statettesttesttestesttesttest",
+            "pincode": "56756"
+          }
+        ],
+        "id": 3
+      },
+      "items": [
+        {
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
+          "user": 3,
+          "quantity": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 1056,
+      "totalItems": 1,
+      "selectedAddress": {
+        "name": "TestTest TestTest",
+        "email": "ttesttesttestesttesttest@gmail.com",
+        "phone": "5657567676",
+        "country": "India",
+        "street": "ttesttesttestesttesttest, ttesttesttestesttesttest,ttesttesttestesttesttest",
+        "city": "Cityttesttesttestesttesttest",
+        "state": "Statettesttesttestesttesttest",
+        "pincode": "56756"
+      },
+      "paymentMethod": "card",
+      "status": "Pending",
+      "id": 6
     }
   ]
 }

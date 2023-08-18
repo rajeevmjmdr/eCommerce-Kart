@@ -44,7 +44,7 @@ const Cart = () => {
           </h1>
           <div className="flow-root">
             <ul role="list" className=" divide-y divide-gray-200">
-              {status === "loading" ? (
+              {/* {status === "loading" ? (
                 <Blocks
                   visible={true}
                   height="80"
@@ -53,8 +53,8 @@ const Cart = () => {
                   wrapperStyle={{}}
                   wrapperClass="blocks-wrapper"
                 />
-              ) : (
-                items.map((item) => (
+              ) : null} */}
+                {items.map((item) => (
                   <li key={item.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
@@ -118,7 +118,7 @@ const Cart = () => {
                     </div>
                   </li>
                 ))
-              )}
+              }
             </ul>
           </div>
         </div>
