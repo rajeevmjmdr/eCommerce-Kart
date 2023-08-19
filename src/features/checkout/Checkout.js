@@ -78,7 +78,7 @@ const Checkout = () => {
       };
       dispatch(createOrderAsync(order));
     } else {
-      alert("Please select Address and Payment method");
+      alert.error("Please select Address and Payment method");
     }
     // TODO : on server change stock
   };

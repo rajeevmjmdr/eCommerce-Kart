@@ -13,12 +13,14 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Modal from "../common/Modal";
+import { useAlert } from 'react-alert';
 
 const ProductForm = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectAllCategories);
   const brands = useSelector(selectAllBrands);
   const params = useParams();
+  const alert = useAlert();
   const selectedProduct = useSelector(selectProductById);
   const {
     register,
@@ -69,12 +71,19 @@ const ProductForm = () => {
     if (params.id) {
       product.id = params.id;
       dispatch(updateProductAsync(product));
+      alert.success('Product Updated', {
+        timeout: 3000
+      })
     } else {
       product.rating = 0;
       dispatch(createProductAsync(product));
+      alert.success('New Product Created', {
+        timeout: 3000
+      })
+      reset();
     }
 
-    reset();
+    
   };
 
   const handleDelete = () => {

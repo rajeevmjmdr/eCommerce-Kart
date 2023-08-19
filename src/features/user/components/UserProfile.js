@@ -32,7 +32,7 @@ export default function UserProfile() {
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
     alert.success('User Address Updated', {
-      timeout: 2000
+      timeout: 3000
     })
   };
   const handleEditForm = (index) => {
@@ -60,7 +60,7 @@ export default function UserProfile() {
     reset();
     setShowAddAddressForm(false);
     alert.success('New Address Added', {
-      timeout: 2000
+      timeout: 3000
     })
   };
 

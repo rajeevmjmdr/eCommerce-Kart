@@ -23,7 +23,7 @@ import { getItemsByUserIdAsync } from "./features/cart/cartSLice";
 import { getLoggedInUserAsync } from "./features/user/userSlice";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
-import { positions, Provider } from "react-alert";
+import { transitions, positions, Provider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
 const router = createBrowserRouter([
@@ -161,6 +161,8 @@ function App() {
   const options = {
     timeout: 3000,
     position: positions.MIDDLE,
+    offset: '10px',
+    transition: transitions.SCALE
   };
   return (
     <div>

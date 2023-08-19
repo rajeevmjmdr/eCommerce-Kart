@@ -33,9 +33,6 @@ const Cart = () => {
   };
   const handleRemove = (e, id) => {
     dispatch(deleteItemFromCartAsync(id));
-    alert.success('Item Deleted from Cart', {
-      timeout: 2000
-    })
   };
 
   return (

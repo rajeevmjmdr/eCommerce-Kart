@@ -65,8 +65,9 @@ const ProductDetail = () => {
       const newProduct = { ...product, productId:product.id, user: user.id, quantity: 1 };
       delete newProduct.id;
       dispatch(addToCartAsync(newProduct));
+      alert.success("Product added in Cart");
     } else {
-      alert.show("Product already added");
+      alert.info("Product already added");
     }
   };
 
