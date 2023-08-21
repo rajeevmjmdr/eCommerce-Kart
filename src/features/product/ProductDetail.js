@@ -61,9 +61,8 @@ const ProductDetail = () => {
 
   const handleCart = (e) => {
     e.preventDefault();
-    if (items.findIndex((item) => item.productId === product.id) < 0) {
-      const newProduct = { ...product, productId:product.id, user: user.id, quantity: 1 };
-      delete newProduct.id;
+    if (items.findIndex((item) => item.product.id === product.id) < 0) {
+      const newProduct = { product:product.id, user: user.id, quantity: 1 };
       dispatch(addToCartAsync(newProduct));
       alert.success("Product added in Cart");
     } else {
