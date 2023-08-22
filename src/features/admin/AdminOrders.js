@@ -63,7 +63,7 @@ const AdminOrders = () => {
   };
   return (
     <div className="bg-white">
-      <main className="mx-auto max-w-8xl sm:px-6 lg:px-4">
+      <main className="mx-auto max-w-full sm:px-6 lg:px-4">
 
         
 
@@ -186,24 +186,29 @@ const AdminOrders = () => {
                             <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                               {order.items &&
                                 order.items.map((item,index) => (
-                                  <div className="" key={index}>
+                                  <div className="flex flex-wrap justify-between" key={index}>
+                                    <div className="w-full text-gray-700 dark:text-gray-200">
                                     <img
                                       className=" inline object-cover w-6 h-6 mx-2 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
-                                      src={item.thumbnail}
+                                      src={item.product.thumbnail}
                                       alt=""
                                     />
-                                    {item.title} -- #{item.quantity} -- $
-                                    {discountedPrice(item)}
+                                    {item.product.title}
+                                    </div>
+                                    <div className="w-full pl-10 text-blue-400 dark:text-blue-200">
+                                    Qty:{item.quantity} -- 
+                                    Price:${discountedPrice(item.product)}
+                                    </div>
                                   </div>
                                 ))}
                             </td>
                             <td className=" py-4 text-sm whitespace-nowrap">
                               <div className="flex flex-wrap justify-between">
-                                <div className="w-full text-gray-700 dark:text-gray-200">
+                                <div className="w-full font-bold text-green-400 dark:text-green-200">
                                   ${order.totalAmount}
                                 </div>
                                 <div className="text-gray-700 dark:text-gray-200">
-                                  paid by {order.paymentMethod}
+                                  Paid - {order.paymentMethod}
                                 </div>
                               </div>
                             </td>
