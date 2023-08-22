@@ -5,7 +5,7 @@ const UserOrdersPage = () => {
   return (
     <>
       <Navbar>
-        <h1 className="mx-auto text-3xl py-4">My Orders</h1>
+        <h1 className="mx-auto text-3xl py-4 px-5">My Orders</h1>
         <UserOrder></UserOrder>
       </Navbar>
       <Footer></Footer>

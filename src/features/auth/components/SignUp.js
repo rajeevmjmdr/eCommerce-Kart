@@ -5,11 +5,10 @@ import { createUserAsync, selectLoggedInUser } from "../authSlice";
 
 const SignUp = ()=>{
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const onSubmit = data => {
-    console.log(data)
     const userData={
       name:data.name,
       email:data.email,
@@ -27,7 +26,7 @@ const SignUp = ()=>{
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="logoekart.png"
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -60,7 +59,7 @@ const SignUp = ()=>{
                   id="email"
                   {...register("email", { required: 'Email is required', 
                   pattern: {
-                    value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                    value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi , // eslint-disable-line
                     message:"Email should be in example@mail.com format"  
                   }})}
                   type="email"

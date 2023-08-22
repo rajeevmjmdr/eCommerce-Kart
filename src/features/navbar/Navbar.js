@@ -49,16 +49,16 @@ const user = {...loggeduser, imageUrl:
                       <Link to="/">
                       <img
                         className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
+                        src="/logo.png"
+                        alt="/logo.png"
                       />
                       </Link>
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item) => (item[user.role] ?
+                        {navigation.map((item,index) => (item[user.role] ?
                           <Link
-                            key={item.name}
+                            key={index}
                             to={item.link}
                             className={classNames(
                               item.current
@@ -113,8 +113,8 @@ const user = {...loggeduser, imageUrl:
                           leaveTo="transform opacity-0 scale-95"
                         >
                           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            {userNavigation.map((item) => (
-                              <Menu.Item key={item.name}>
+                            {userNavigation.map((item,index) => (
+                              <Menu.Item key={index}>
                                 {({ active }) => (
                                   <Link
                                     to={item.link}
@@ -155,10 +155,10 @@ const user = {...loggeduser, imageUrl:
 
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                  {navigation.map((item) => (item[user.role] ?
-                    <Link to={item.link}> 
+                  {navigation.map((item,index) => (item[user.role] ?
+                    <Link to={item.link}  key={index}> 
                     <Disclosure.Button
-                      key={item.name}
+                     
                       as="a"
                       className={classNames(
                         item.current
@@ -207,10 +207,10 @@ const user = {...loggeduser, imageUrl:
                     </Link>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
-                    {userNavigation.map((item) => (
-                      <Link to={item.link}>
+                    {userNavigation.map((item,index) => (
+                      <Link to={item.link} key={index}>
                       <Disclosure.Button
-                        key={item.name}
+                        
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                       >
                         {item.name}
@@ -227,7 +227,7 @@ const user = {...loggeduser, imageUrl:
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              E-Kart
+              EKART
             </h1>
           </div>
         </header>

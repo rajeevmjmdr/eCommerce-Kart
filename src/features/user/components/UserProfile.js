@@ -15,7 +15,6 @@ export default function UserProfile() {
     register,
     reset,
     handleSubmit,
-    watch,
     setValue,
     formState: { errors },
   } = useForm();
@@ -55,7 +54,6 @@ export default function UserProfile() {
   };
   const onSubmitAdd = (address) => {
     const newUser = { ...user, addresses: [...user.addresses,address] };
-    console.log(newUser);
     dispatch(updateUserAsync(newUser));
     reset();
     setShowAddAddressForm(false);
@@ -67,10 +65,10 @@ export default function UserProfile() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12 mt-5 bg-white">
       <div className="border-b border-gray-900/10 pb-10 ">
-        <h1 className="py-3 text-3xl font-bold tracking-tight text-gray-500 border-b border-gray-200">
+        <h1 className="py-3 sm:text-xl lg:text-3xl font-bold tracking-tight text-gray-500 border-b border-gray-200">
           Name: {user ? user.name : "New User"}
         </h1>
-        <h1 className="py-3 text-2xl font-bold tracking-tight text-red-500">
+        <h1 className="py-3 sm:text-xl lg:text-2xl font-bold tracking-tight text-red-500">
           email: {user.email}
         </h1>
         {user.role==='admin'?<h1 className="py-3 text-xl font-bold tracking-tight text-blue-500">
@@ -131,7 +129,7 @@ export default function UserProfile() {
                               {...register("email", {
                                 required: "email is required",
                                 pattern: {
-                                  value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                                  value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,// eslint-disable-line
                                   message:
                                     "Email should be in example@mail.com format",
                                 },
@@ -160,7 +158,7 @@ export default function UserProfile() {
                                 required: "phone is required",
                                 pattern: {
                                   value:
-                                    /^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/g,
+                                    /^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/g,// eslint-disable-line
                                   message: "Enter Valid phone no",
                                 },
                               })}
@@ -316,10 +314,10 @@ export default function UserProfile() {
                 ) : null}
         <p className="mt-1 text-sm leading-6 text-gray-600">Your Address</p>
 
-        <ul role="list" className=" ">
+        <ul>
           {user.addresses &&
             user.addresses.map((address, index) => (
-              <div>
+              <div key={index}>
                 {selectedEditIndex === index ? (
                   <form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <div className="border-b border-gray-900/10 pb-12">
@@ -368,7 +366,7 @@ export default function UserProfile() {
                               {...register("email", {
                                 required: "email is required",
                                 pattern: {
-                                  value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                                  value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi, // eslint-disable-line
                                   message:
                                     "Email should be in example@mail.com format",
                                 },
@@ -397,7 +395,7 @@ export default function UserProfile() {
                                 required: "phone is required",
                                 pattern: {
                                   value:
-                                    /^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/g,
+                                    /^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/g, // eslint-disable-line
                                   message: "Enter Valid phone no",
                                 },
                               })}

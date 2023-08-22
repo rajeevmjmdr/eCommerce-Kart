@@ -1,4 +1,3 @@
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearSelectedProduct,
@@ -27,7 +26,6 @@ const ProductForm = () => {
     reset,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
   } = useForm();
   const [openModal, setOpenModal] = useState(-1);
@@ -54,7 +52,7 @@ const ProductForm = () => {
       setValue("image2", selectedProduct.images[1]);
       setValue("image3", selectedProduct.images[2]);
     }
-  }, [selectedProduct, params.id]);
+  }, [selectedProduct, params.id,setValue]);
 
   const onSubmit = (data) => {
     const product = { ...data };
@@ -67,7 +65,7 @@ const ProductForm = () => {
     delete product.image1;
     delete product.image2;
     delete product.image3;
-    console.log(product);
+    
     if (params.id) {
       product.id = params.id;
       dispatch(updateProductAsync(product));
@@ -174,8 +172,8 @@ const ProductForm = () => {
                 >
                   <option value="">--Choose category--</option>
                   {categories &&
-                    categories.map((category) => (
-                      <option value={category.value}>{category.label}</option>
+                    categories.map((category,index) => (
+                      <option key={index} value={category.value}>{category.label}</option>
                     ))}
                 </select>
               </div>
@@ -199,8 +197,8 @@ const ProductForm = () => {
                 >
                   <option value="">--Choose brand--</option>
                   {brands &&
-                    brands.map((brand) => (
-                      <option value={brand.value}>{brand.label}</option>
+                    brands.map((brand,index) => (
+                      <option key={index} value={brand.value}>{brand.label}</option>
                     ))}
                 </select>
               </div>

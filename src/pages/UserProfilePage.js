@@ -5,7 +5,7 @@ const UserProfilePage = () => {
   return (
     <>
       <Navbar>
-        <h1 className="mx-auto text-3xl py-4">My Profile</h1>
+        <h1 className="mx-auto text-3xl py-4 px-5">My Profile</h1>
         <UserProfile></UserProfile>
       </Navbar>
       <Footer></Footer>

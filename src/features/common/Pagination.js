@@ -51,6 +51,7 @@ const Pagination = ({ filters, page, setPage, handlerPage, totalItems })=> {
               {Array.from({ length: Math.ceil(totalItems / ITEMS_PER_PAGE) }).map(
                 (el, index) => (
                   <div
+                  key={index}
                     onClick={() => handlerPage(index + 1)}
                     aria-current="page"
                     className={`relative cursor-pointer z-10 inline-flex items-center 

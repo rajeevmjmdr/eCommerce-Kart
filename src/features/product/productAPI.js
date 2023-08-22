@@ -1,12 +1,4 @@
 
-// TODO
-export function getAllProducts() {
-  return new Promise(async (resolve) =>{
-    const response = await fetch("http://localhost:8080/products");
-    const data = await response.json();
-    resolve({data})
-});
-}
 // TODO : multiple filter
 //TODO: filter deleted prodicts from server
 export function getProductsByFilter({filter,sort,pagination}) {
@@ -38,7 +30,6 @@ export function getAllCategories() {
   return new Promise(async (resolve) =>{
     const response = await fetch("http://localhost:8080/categories");
     const data = await response.json();
-   // console.log(data);
     resolve({data:{categories:data}})
 });
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getLoggedInUserOrdersAsync,
@@ -31,20 +31,20 @@ export function UserOrder() {
           wrapperClass="blocks-wrapper"
         />
       ) : (
-        orders.map((order) => (
-          <div>
+        orders.map((order,index) => (
+          <div key={index}>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="px-8 py-6 bg-white">
-                <h1 className="py-3 text-4xl font-bold tracking-tight text-gray-900 border-b border-gray-200">
+                <h1 className="py-3 sm:text-xl lg:text-3xl font-bold tracking-tight text-gray-900 border-b border-gray-200">
                   Order No # {order.id}
                 </h1>
-                <h1 className="py-3 text-3xl font tracking-tight text-red-500">
+                <h1 className="py-3 sm:text-xl lg:text-3xl font tracking-tight text-red-500">
                   Order Status : {order.status}
                 </h1>
                 <div className="flow-root">
-                  <ul role="list" className=" divide-y divide-gray-200">
-                    {order.items.map((item) => (
-                      <li key={item.id} className="flex py-6">
+                  <ul className=" divide-y divide-gray-200">
+                    {order.items.map((item,index) => (
+                      <li key={index} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
                             src={item.product.thumbnail}
@@ -94,7 +94,6 @@ export function UserOrder() {
                   </h2>
 
                   <ul
-                    role="list"
                     className="divide-y divide-gray-100 border border-gray-900/10 px-5"
                   >
                     <li className="flex justify-between gap-x-6 py-5">

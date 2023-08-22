@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
-import { Link, useParams } from "react-router-dom";
-import Navbar from "../navbar/Navbar";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductByIdAsync,
@@ -15,10 +14,10 @@ import { discountedPrice } from "../../app/const";
 import { Blocks } from "react-loader-spinner";
 import { useAlert } from 'react-alert';
 
-const breadcrumbs = [
-  { id: 1, name: "Men", href: "#" },
-  { id: 2, name: "Clothing", href: "#" },
-];
+// const breadcrumbs = [
+//   { id: 1, name: "Men", href: "#" },
+//   { id: 2, name: "Clothing", href: "#" },
+// ];
 
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
@@ -71,7 +70,6 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    console.log(params);
     dispatch(getProductByIdAsync(params.id));
   }, [dispatch, params]);
 
@@ -91,7 +89,6 @@ const ProductDetail = () => {
           <div className="pt-6">
             <nav aria-label="Breadcrumb">
               <ol
-                role="list"
                 className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
               >
                 {/* TODO :  */}
@@ -119,6 +116,7 @@ const ProductDetail = () => {
               ))} */}
                 <li className="text-sm">
                   <a
+                  href={product.thumbnail}
                     aria-current="page"
                     className="font-medium text-gray-500 hover:text-gray-600"
                   >
@@ -361,7 +359,6 @@ const ProductDetail = () => {
 
                   <div className="mt-4">
                     <ul
-                      role="list"
                       className="list-disc space-y-2 pl-4 text-sm"
                     >
                       {highlights.map((highlight) => (

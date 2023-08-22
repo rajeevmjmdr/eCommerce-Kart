@@ -21,7 +21,6 @@ const Checkout = () => {
     register,
     reset,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const items = useSelector(selectitems);
@@ -45,7 +44,6 @@ const Checkout = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(
       updateUserAsync({ ...user, addresses: [...user.addresses, data] })
     );
@@ -56,12 +54,10 @@ const Checkout = () => {
   };
 
   const handleAddress = (e) => {
-    console.log(e.target.value);
     setSelectedAddress(user.addresses[e.target.value]);
   };
 
   const handlePayment = (e) => {
-    console.log(e.target.value);
     setPaymentMethod(e.target.value);
   };
 
@@ -139,7 +135,7 @@ const Checkout = () => {
                         {...register("email", {
                           required: "email is required",
                           pattern: {
-                            value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                            value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,// eslint-disable-line
                             message:
                               "Email should be in example@mail.com format",
                           },
@@ -168,7 +164,7 @@ const Checkout = () => {
                           required: "phone is required",
                           pattern: {
                             value:
-                              /^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/g,
+                              /^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/g,// eslint-disable-line
                             message: "Enter Valid phone no",
                           },
                         })}
@@ -327,7 +323,7 @@ const Checkout = () => {
                 Choose from existing address.
               </p>
 
-              <ul role="list" className="divide-y divide-gray-100">
+              <ul className="divide-y divide-gray-100">
                 {user.addresses &&
                   user.addresses.map((address, index) => (
                     <li
@@ -436,7 +432,7 @@ const Checkout = () => {
                 Cart
               </h1>
               <div className="flow-root">
-                <ul role="list" className=" divide-y divide-gray-200">
+                <ul  className=" divide-y divide-gray-200">
                   {items.map((item) => (
                     <li key={item.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">

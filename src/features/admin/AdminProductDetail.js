@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductByIdAsync, selectProductById } from "../product/productSlice";
 import { addToCartAsync } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
 import { discountedPrice } from "../../app/const";
 
-const breadcrumbs = [
-  { id: 1, name: "Men", href: "#" },
-  { id: 2, name: "Clothing", href: "#" },
-];
+// const breadcrumbs = [
+//   { id: 1, name: "Men", href: "#" },
+//   { id: 2, name: "Clothing", href: "#" },
+// ];
 
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
@@ -57,7 +57,6 @@ const AdminProductDetail = () => {
   }
   
 useEffect(()=>{
-  console.log(params);
   dispatch(getProductByIdAsync(params.id));
 },[dispatch,params])
 
@@ -66,7 +65,6 @@ useEffect(()=>{
        {product && <div className="pt-6">
           <nav aria-label="Breadcrumb">
             <ol
-              role="list"
               className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
             >
               {/* TODO :  */}
@@ -94,7 +92,7 @@ useEffect(()=>{
               ))} */}
               <li className="text-sm">
                 <a
-                 
+                href={product.thumbnail}
                   aria-current="page"
                   className="font-medium text-gray-500 hover:text-gray-600"
                 >
@@ -198,9 +196,9 @@ useEffect(()=>{
                       Choose a color
                     </RadioGroup.Label>
                     <div className="flex items-center space-x-3">
-                      {colors.map((color) => (
+                      {colors.map((color,index) => (
                         <RadioGroup.Option
-                          key={color.name}
+                          key={index}
                           value={color}
                           className={({ active, checked }) =>
                             classNames(
@@ -248,9 +246,9 @@ useEffect(()=>{
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                      {sizes.map((size) => (
+                      {sizes.map((size,index) => (
                         <RadioGroup.Option
-                          key={size.name}
+                          key={index}
                           value={size}
                           disabled={!size.inStock}
                           className={({ active }) =>
@@ -335,9 +333,9 @@ useEffect(()=>{
                 </h3>
 
                 <div className="mt-4">
-                  <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                    {highlights.map((highlight) => (
-                      <li key={highlight} className="text-gray-400">
+                  <ul  className="list-disc space-y-2 pl-4 text-sm">
+                    {highlights.map((highlight,index) => (
+                      <li key={index} className="text-gray-400">
                         <span className="text-gray-600">{highlight}</span>
                       </li>
                     ))}

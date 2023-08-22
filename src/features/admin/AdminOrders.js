@@ -1,6 +1,5 @@
 import {
   CloudArrowUpIcon,
-  MagnifyingGlassIcon,
   PencilSquareIcon,
   EyeIcon,
 } from "@heroicons/react/24/solid";
@@ -25,7 +24,6 @@ const AdminOrders = () => {
   const status = useSelector(selectOrdersStatus);
   const handlerPage = (page) => {
     setPage(page);
-    console.log(page);
   };
   const [editableOrderId, setEditableOrderId] = useState(-1);
   useEffect(() => {
@@ -176,8 +174,8 @@ const AdminOrders = () => {
                         />
                       ) : (
                         orders &&
-                        orders.map((order) => (
-                          <tr>
+                        orders.map((order,index) => (
+                          <tr key={index}>
                             <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                               <div>
                                 <h2 className="font-medium text-gray-800 dark:text-white ">
@@ -187,8 +185,8 @@ const AdminOrders = () => {
                             </td>
                             <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                               {order.items &&
-                                order.items.map((item) => (
-                                  <div className="">
+                                order.items.map((item,index) => (
+                                  <div className="" key={index}>
                                     <img
                                       className=" inline object-cover w-6 h-6 mx-2 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
                                       src={item.thumbnail}
@@ -243,17 +241,17 @@ const AdminOrders = () => {
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                               <div
                                 className={`inline px-3 py-1 text-sm font-normal ${
-                                  order.id == editableOrderId
+                                  order.id === editableOrderId
                                     ? ""
                                     : changeColor(order.status)
                                 }} `}
                               >
-                                {order.id == editableOrderId ? (
+                                {order.id === editableOrderId ? (
                                   <select
                                     onChange={(e) => handleUpdate(e, order)}
                                   >
-                                    {STATUS.map((st) => (
-                                      <option value={st.value}>
+                                    {STATUS.map((st,index) => (
+                                      <option key={index} value={st.value}>
                                         {st.label}
                                       </option>
                                     ))}
