@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
-export function getLoggedInUserOrders(userId) {
+export function getLoggedInUserOrders() {
   return new Promise(async (resolve) =>{
-    const response = await fetch("http://localhost:8080/orders/user/"+userId);
+    const response = await fetch("http://localhost:8080/orders/user/");
     // TODO : only return relevant information
     const data = await response.json();
     resolve({data})
@@ -10,7 +10,7 @@ export function getLoggedInUserOrders(userId) {
 
 export function updateUser(userData) {
   return new Promise(async (resolve) =>{
-    const response = await fetch("http://localhost:8080/users/"+userData.id,{
+    const response = await fetch("http://localhost:8080/users/",{
       method:'PATCH',
       body:JSON.stringify(userData),
       headers:{'content-type':'application/json'}
@@ -21,9 +21,9 @@ export function updateUser(userData) {
 });
 }
 
-export function getLoggedInUser(userId) {
+export function getLoggedInUser() {
   return new Promise(async (resolve) =>{
-    const response = await fetch("http://localhost:8080/users/"+userId);
+    const response = await fetch("http://localhost:8080/users/own");
     // TODO : only return relevant information
     const data = await response.json();
     resolve({data})

@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectitems } from "../cart/cartSLice";
-import { selectLoggedInUser } from "../auth/authSlice";
+import { selectUserInfo } from "../user/userSlice";
 
 // const userold = {
 //   name: "Rajeev",
@@ -32,8 +32,8 @@ function classNames(...classes) {
 
 export default function Navbar({ children }) {
   const items = useSelector(selectitems);
-  const loggeduser = useSelector(selectLoggedInUser);
-const user = {...loggeduser, imageUrl:
+  const userInfo = useSelector(selectUserInfo);
+const user = {...userInfo, imageUrl:
   "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
   return (

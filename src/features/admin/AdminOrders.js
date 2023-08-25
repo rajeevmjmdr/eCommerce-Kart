@@ -196,8 +196,8 @@ const AdminOrders = () => {
                                     {item.product.title}
                                     </div>
                                     <div className="w-full pl-10 text-blue-400 dark:text-blue-200">
-                                    Qty:{item.quantity} -- 
-                                    Price:${discountedPrice(item.product)}
+                                    Qty: {item.quantity} -- 
+                                    Price: ${discountedPrice(item.product)}
                                     </div>
                                   </div>
                                 ))}

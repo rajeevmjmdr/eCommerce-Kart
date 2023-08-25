@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUserAsync, selectLoggedInUser } from "../authSlice";
+import { logoutUserAsync, selectLoggedInUserToken } from "../authSlice";
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 const Logout = ()=>{
 const dispatch = useDispatch();
-const user = useSelector(selectLoggedInUser);
+const user = useSelector(selectLoggedInUserToken);
 useEffect(()=>{
-    dispatch(logoutUserAsync(user.id));
-},[dispatch,user.id])
+    dispatch(logoutUserAsync());
+},[dispatch])
     return(
         <>
         {!user && <Navigate to="/login" replace={true}></Navigate>}

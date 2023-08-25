@@ -18,7 +18,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import LogoutPage from "./pages/LogoutPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUser } from "./features/auth/authSlice";
+import { selectLoggedInUserToken } from "./features/auth/authSlice";
 import { getItemsByUserIdAsync } from "./features/cart/cartSLice";
 import { getLoggedInUserAsync } from "./features/user/userSlice";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
@@ -150,11 +150,11 @@ const router = createBrowserRouter([
 ]);
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectLoggedInUserToken);
   useEffect(() => {
     if (user != null) {
-      dispatch(getItemsByUserIdAsync(user.id));
-      dispatch(getLoggedInUserAsync(user.id));
+      dispatch(getItemsByUserIdAsync());
+      dispatch(getLoggedInUserAsync());
     }
   }, [dispatch, user]);
 

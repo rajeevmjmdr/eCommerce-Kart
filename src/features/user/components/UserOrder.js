@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getLoggedInUserOrdersAsync,
-  selectUserInfo,
   selectUserOrderStatus,
   selectUserOrders,
 } from "../userSlice";
@@ -10,14 +9,13 @@ import { discountedPrice } from "../../../app/const";
 import { Blocks } from "react-loader-spinner";
 
 export function UserOrder() {
-  const user = useSelector(selectUserInfo);
   const dispatch = useDispatch();
   const orders = useSelector(selectUserOrders);
   const status = useSelector(selectUserOrderStatus);
 
   useEffect(() => {
-    dispatch(getLoggedInUserOrdersAsync(user.id));
-  }, [dispatch, user.id]);
+    dispatch(getLoggedInUserOrdersAsync());
+  }, [dispatch]);
 
   return (
     <div>

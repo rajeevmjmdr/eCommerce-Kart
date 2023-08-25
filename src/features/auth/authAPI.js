@@ -24,16 +24,16 @@ export function checkUser(loginInfo) {
         const data = await response.json();
         resolve({ data });
       } else {
-        const errdata = await response.json();
+        const errdata = await response.text();
         reject({ errdata });
       }
-    } catch (err) {
-      reject({ err });
+    } catch (errdata) {
+      reject({ errdata });
     }
   });
 }
 
-export function logoutUser(userId) {
+export function logoutUser() {
   return new Promise(async (resolve) => {
     // TODO: Resolve session from server
     resolve({ status: "Success" });

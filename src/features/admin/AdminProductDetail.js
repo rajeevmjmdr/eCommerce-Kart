@@ -7,7 +7,7 @@ import { getProductByIdAsync, selectProductById } from "../product/productSlice"
 import { addToCartAsync } from "../cart/cartSLice";
 import { selectUserInfo } from "../user/userSlice";
 import { discountedPrice } from "../../app/const";
-
+import { useAlert } from 'react-alert';
 // const breadcrumbs = [
 //   { id: 1, name: "Men", href: "#" },
 //   { id: 2, name: "Clothing", href: "#" },
@@ -47,13 +47,16 @@ const AdminProductDetail = () => {
   const dispatch = useDispatch();
   const product = useSelector(selectProductById)
   const params = useParams();
-  const user = useSelector(selectUserInfo);
+  const alert = useAlert();
 
   const handleCart = (e)=>{
     e.preventDefault();
-    const newProduct = {...product,user:user.id,quantity:1};
-    delete newProduct.id;
-    dispatch(addToCartAsync(newProduct));
+    const newProduct = {...product,quantity:1};
+    delete newProduct['id'];
+    alert.info('Admin cant access Cart', {
+      timeout: 2000
+    })
+    //dispatch(addToCartAsync(newProduct));
   }
   
 useEffect(()=>{

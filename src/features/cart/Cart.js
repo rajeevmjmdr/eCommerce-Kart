@@ -1,8 +1,5 @@
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import Navbar from "../navbar/Navbar";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,15 +9,14 @@ import {
   selectCartStatus,
 } from "./cartSLice";
 import { discountedPrice } from "../../app/const";
-import { Blocks } from "react-loader-spinner";
 import Modal from "../common/Modal";
-import { useAlert } from 'react-alert';
+
 
 const Cart = () => {
   const [open, setOpen] = useState(true);
   const [openModal, setOpenModal] = useState(-1);
   const items = useSelector(selectitems);
-  const alert = useAlert();
+
   const totalAmount = items.reduce(
     (amount, item) => discountedPrice(item.product) * item.quantity + amount,
     0
@@ -45,7 +41,7 @@ const Cart = () => {
             Cart
           </h1>
           <div className="flow-root">
-            <ul role="list" className=" divide-y divide-gray-200">
+            <ul  className=" divide-y divide-gray-200">
               {/* {status === "loading" ? (
                 <Blocks
                   visible={true}
@@ -56,7 +52,7 @@ const Cart = () => {
                   wrapperClass="blocks-wrapper"
                 />
               ) : null} */}
-                {items.map((item) => (
+                {items && items.map((item) => (
                   <li key={item.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
@@ -72,7 +68,7 @@ const Cart = () => {
                           <h3>
                             <a href={item.product.thumbnail}>{item.product.title}</a>
                           </h3>
-                          <p className="ml-4">$ {discountedPrice(item.product)}</p>
+                          {item.product.price && <p className="ml-4">$ {discountedPrice(item.product)}</p>}
                         </div>
                         <p className="mt-1 text-sm text-gray-500">
                           {item.product.brand}

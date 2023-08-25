@@ -11,9 +11,9 @@ export function addToCart(item) {
 });
 }
 
-export function getItemsByUserId(userId) {
+export function getItemsByUserId() {
   return new Promise(async (resolve) =>{
-    const response = await fetch("http://localhost:8080/cart?user="+userId);
+    const response = await fetch("http://localhost:8080/cart");
     const data = await response.json();
     resolve({data})
 });
@@ -21,7 +21,7 @@ export function getItemsByUserId(userId) {
 
 export function updateCart(update) {
   return new Promise(async (resolve) =>{
-    const response = await fetch("http://localhost:8080/cart/"+update.id,{
+    const response = await fetch("http://localhost:8080/cart",{
       method:'PATCH',
       body:JSON.stringify(update),
       headers:{'content-type':'application/json'}
@@ -44,9 +44,9 @@ export function deleteItemFromCart(itemId) {
 });
 }
 
-export function resetCart(userId) {
+export function resetCart() {
   return new Promise(async (resolve) =>{
-    const response = await getItemsByUserId(userId)
+    const response = await getItemsByUserId()
     const items = response.data;
     for(let item of items){
       await deleteItemFromCart(item.id)

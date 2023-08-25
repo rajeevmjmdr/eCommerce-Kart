@@ -3,7 +3,7 @@ import { checkUser, createUser, logoutUser, updateUser } from './authAPI';
 
 
 const initialState = {
-  loggedInUser: null,
+  loggedInUserToken: null,
   status: 'idle',
   error:null
 };
@@ -33,8 +33,8 @@ export const checkUserAsync = createAsyncThunk(
 
 export const logoutUserAsync = createAsyncThunk(
   'user/logoutUser',
-  async (userId) => {
-    const response = await logoutUser(userId);
+  async () => {
+    const response = await logoutUser();
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -58,14 +58,14 @@ export const authSlice = createSlice({
       })
       .addCase(createUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
       .addCase(checkUserAsync.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(checkUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
       .addCase(checkUserAsync.rejected, (state, action) => {
         state.status = 'error';
@@ -77,7 +77,7 @@ export const authSlice = createSlice({
       .addCase(logoutUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.error = null;
-        state.loggedInUser = null;
+        state.loggedInUserToken = null;
       });
 
 
@@ -89,6 +89,6 @@ export const authSlice = createSlice({
 
 // The function below is called a selector and allows us to select a value from
 // the state.
-export const selectLoggedInUser = (state) => state.auth.loggedInUser;
+export const selectLoggedInUserToken = (state) => state.auth.loggedInUserToken;
 export const selectLoggedInError = (state) => state.auth.error;
 export default authSlice.reducer;

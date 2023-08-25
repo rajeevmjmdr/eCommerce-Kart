@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { checkUserAsync, selectLoggedInError, selectLoggedInUser } from "../authSlice";
+import { checkUserAsync, selectLoggedInError, selectLoggedInUserToken } from "../authSlice";
 
 const Login = ()=>{
   const { register, handleSubmit, formState: { errors } } = useForm();
   const dispatch = useDispatch();
   const loginError = useSelector(selectLoggedInError);
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectLoggedInUserToken);
   const onSubmit = data => {
     dispatch(checkUserAsync(data));
   };
@@ -69,7 +69,7 @@ const Login = ()=>{
               </div>
               {errors.password && <span className="text-red-500">{errors.password?.message}</span>}
             </div>
-            {loginError && <span className="text-red-500">{loginError?.message}</span>}
+            {loginError && <span className="text-red-500">{loginError || loginError.message}</span>}
             <div>
               <button
                 type="submit"
