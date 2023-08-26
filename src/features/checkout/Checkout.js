@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import {
   deleteItemFromCartAsync,
+  selectCartLoaded,
   selectitems,
   updateCartAsync,
 } from "../cart/cartSLice";
@@ -35,7 +36,7 @@ const Checkout = () => {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const alert = useAlert();
-
+  const cartLoaded = useSelector(selectCartLoaded);
   const handleQuantity = (e, item) => {
     dispatch(updateCartAsync({id:item.id, quantity: +e.target.value }));
   };
@@ -80,7 +81,7 @@ const Checkout = () => {
   };
   return (
     <>
-      {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {!items.length && cartLoaded && <Navigate to="/" replace={true}></Navigate>}
       {currentOrder && (
         <Navigate
           to={`/order_success/${currentOrder.id}`}
@@ -324,7 +325,7 @@ const Checkout = () => {
               </p>
 
               <ul className="divide-y divide-gray-100">
-                {user.addresses &&
+                {user && user.addresses &&
                   user.addresses.map((address, index) => (
                     <li
                       key={index}
@@ -433,7 +434,7 @@ const Checkout = () => {
               </h1>
               <div className="flow-root">
                 <ul  className=" divide-y divide-gray-200">
-                  {items.map((item) => (
+                  {items && items.map((item) => (
                     <li key={item.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img

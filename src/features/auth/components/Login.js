@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { checkUserAsync, selectLoggedInError, selectLoggedInUserToken } from "../authSlice";
+import { loginUserAsync, selectLoggedInError, selectLoggedInUserToken } from "../authSlice";
 
 const Login = ()=>{
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -9,7 +9,7 @@ const Login = ()=>{
   const loginError = useSelector(selectLoggedInError);
   const user = useSelector(selectLoggedInUserToken);
   const onSubmit = data => {
-    dispatch(checkUserAsync(data));
+    dispatch(loginUserAsync(data));
   };
 
     return (

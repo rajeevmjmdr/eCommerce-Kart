@@ -7,6 +7,7 @@ import {
   updateCartAsync,
   deleteItemFromCartAsync,
   selectCartStatus,
+  selectCartLoaded,
 } from "./cartSLice";
 import { discountedPrice } from "../../app/const";
 import Modal from "../common/Modal";
@@ -16,6 +17,7 @@ const Cart = () => {
   const [open, setOpen] = useState(true);
   const [openModal, setOpenModal] = useState(-1);
   const items = useSelector(selectitems);
+  const cartLoaded = useSelector(selectCartLoaded);
 
   const totalAmount = items.reduce(
     (amount, item) => discountedPrice(item.product) * item.quantity + amount,
@@ -33,7 +35,7 @@ const Cart = () => {
 
   return (
     <>
-      {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {!items.length && cartLoaded &&  <Navigate to="/" replace={true}></Navigate>}
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="px-8 py-6 bg-white">

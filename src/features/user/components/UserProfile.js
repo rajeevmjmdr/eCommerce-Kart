@@ -69,9 +69,9 @@ export default function UserProfile() {
           Name: {user ? user.name : "New User"}
         </h1>
         <h1 className="py-3 sm:text-xl lg:text-2xl font-bold tracking-tight text-red-500">
-          email: {user.email}
+          email: {user && user.email}
         </h1>
-        {user.role==='admin'?<h1 className="py-3 text-xl font-bold tracking-tight text-blue-500">
+        {user && user.role==='admin'?<h1 className="py-3 text-xl font-bold tracking-tight text-blue-500">
           role: {user.role}
         </h1>:<></>}
         <button
@@ -315,7 +315,7 @@ export default function UserProfile() {
         <p className="mt-1 text-sm leading-6 text-gray-600">Your Address</p>
 
         <ul>
-          {user.addresses &&
+          {user && user.addresses &&
             user.addresses.map((address, index) => (
               <div key={index}>
                 {selectedEditIndex === index ? (

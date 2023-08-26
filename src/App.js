@@ -18,7 +18,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import LogoutPage from "./pages/LogoutPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUserToken } from "./features/auth/authSlice";
+import { checkAuthAsync, selectLoggedInUserToken, selectuserChecked } from "./features/auth/authSlice";
 import { getItemsByUserIdAsync } from "./features/cart/cartSLice";
 import { getLoggedInUserAsync } from "./features/user/userSlice";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
@@ -151,6 +151,12 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUserToken);
+  const userChecked = useSelector(selectuserChecked);
+  
+  useEffect(()=>{
+    dispatch(checkAuthAsync());
+  },[dispatch]);
+
   useEffect(() => {
     if (user != null) {
       dispatch(getItemsByUserIdAsync());
@@ -166,9 +172,9 @@ function App() {
   };
   return (
     <div>
-      <Provider template={AlertTemplate} {...options}>
+      {userChecked && <Provider template={AlertTemplate} {...options}>
         <RouterProvider router={router} />
-      </Provider>
+      </Provider>}
     </div>
   );
 }
