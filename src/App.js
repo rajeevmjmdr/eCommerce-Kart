@@ -25,6 +25,7 @@ import AdminProductFormPage from "./pages/AdminProductFormPage";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
 import { transitions, positions, Provider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import StripeCheckoutPage from "./pages/StripeCheckoutPage";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,14 @@ const router = createBrowserRouter([
       <ProtectedAdmin>
         <AdminOrdersPage></AdminOrdersPage>
       </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/stripe-checkout",
+    element: (
+      <Protected>
+        <StripeCheckoutPage></StripeCheckoutPage>
+      </Protected>
     ),
   },
   {

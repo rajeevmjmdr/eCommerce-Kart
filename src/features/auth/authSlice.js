@@ -95,7 +95,7 @@ export const authSlice = createSlice({
       })
       .addCase(checkAuthAsync.rejected, (state, action) => {
         state.status = "error";
-        state.error = action.payload.errdata;
+        state.error = action.payload;
         state.userChecked = true;
       });
   },

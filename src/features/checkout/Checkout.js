@@ -82,9 +82,15 @@ const Checkout = () => {
   return (
     <>
       {!items.length && cartLoaded && <Navigate to="/" replace={true}></Navigate>}
-      {currentOrder && (
+      {currentOrder && currentOrder.paymentMethod ==='cash' && (
         <Navigate
           to={`/order_success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
+      {currentOrder && currentOrder.paymentMethod ==='card' && (
+        <Navigate
+          to={`/stripe-checkout`}
           replace={true}
         ></Navigate>
       )}

@@ -1,19 +1,17 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, Navigate, useParams} from "react-router-dom";
 import { resetCartAsync } from "../features/cart/cartSLice";
 import { resetOrder } from "../features/order/orderSlice";
-import { selectUserInfo } from "../features/user/userSlice";
 import Footer from "../features/common/Footer";
 export default function Order_SuccessPage() {
   const params = useParams();
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
 
   useEffect(()=>{
-    dispatch(resetCartAsync(user.id));
+    dispatch(resetCartAsync());
     dispatch(resetOrder());
-  },[dispatch,user.id])
+  },[dispatch])
 
   return (
     <>
@@ -22,7 +20,7 @@ export default function Order_SuccessPage() {
         <div className="text-center">
           <p className="text-2xl font-semibold text-indigo-600">Order Successfully Placed</p>
           <h1 className="mt-4 sm:text-xl lg:text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Order number #{params.id}
+            Order number #{params?.id}
           </h1>
           <p className="mt-6 text-base leading-7 text-gray-600">
             You can check your order MyAccount {`>`} MyOrders.

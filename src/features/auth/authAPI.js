@@ -45,8 +45,8 @@ export function checkAuth() {
         const errdata = await response.json();
         reject({ errdata });
       }
-    } catch (errdata) {
-      reject({ errdata });
+    } catch (error) {
+      reject(error);
     }
   });
 }
