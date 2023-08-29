@@ -61,7 +61,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://localhost:3000/order_success/${currentOrder.id}`,
+        return_url: `https://ecommerce-five-flame.vercel.app/order_success/${currentOrder.id}`,
         //receipt_email: currentOrder.selectedAddress.email,
       },
     });

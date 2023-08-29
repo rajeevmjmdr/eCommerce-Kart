@@ -1,12 +1,16 @@
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { Link} from "react-router-dom";
+import { resetPasswordRequestAsync, selectmailSent } from "../authSlice";
 
 
 const ForgotPassword = ()=>{
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
+  const dispatch = useDispatch();
+  const mailSent = useSelector(selectmailSent);
   const onSubmit = data => {
-    console.log(data)
+    //console.log(data)
+    dispatch(resetPasswordRequestAsync(data));
     //TODO :  implement through backend 
   };
 
@@ -16,8 +20,8 @@ const ForgotPassword = ()=>{
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
+            src="/logo.png"
+            alt="Company logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Enter email to reset password
@@ -44,6 +48,9 @@ const ForgotPassword = ()=>{
               </div>
               {errors.email && <span className="text-red-500">{errors.email?.message}</span>}
             </div>
+            {(mailSent && mailSent.success)? <span className="text-green-500">mail sent to {mailSent.value.message}</span>
+            : (mailSent && mailSent.error) ? <span className="text-red-500">{mailSent.value.errdata && mailSent.value.errdata.message}</span>:
+            null}
             <div>
               <button
                 type="submit"
