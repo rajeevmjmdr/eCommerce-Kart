@@ -15,7 +15,7 @@ const initialState = {
   error: null,
   userChecked: false,
   mailSent: { success: false, error: false, value: null },
-  passwordReset:false
+  passwordReset: false,
 };
 
 export const createUserAsync = createAsyncThunk(
@@ -35,7 +35,7 @@ export const loginUserAsync = createAsyncThunk(
       // The value we return becomes the `fulfilled` action payload
       return response.data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -72,7 +72,8 @@ export const resetPasswordAsync = createAsyncThunk(
   }
 );
 
-export const logoutUserAsync = createAsyncThunk("user/logoutUser", async () => {
+export const logoutUserAsync = createAsyncThunk(
+  "user/logoutUser", async () => {
   const response = await logoutUser();
   // The value we return becomes the `fulfilled` action payload
   return response.data;
@@ -134,7 +135,7 @@ export const authSlice = createSlice({
         state.status = "idle";
         state.mailSent.value = action.payload;
         state.mailSent.success = true;
-         state.mailSent.error = false;
+        state.mailSent.error = false;
       })
       .addCase(resetPasswordRequestAsync.rejected, (state, action) => {
         state.status = "error";
@@ -151,7 +152,7 @@ export const authSlice = createSlice({
       })
       .addCase(resetPasswordAsync.rejected, (state, action) => {
         state.status = "error";
-        state.error= action.payload;
+        state.error = action.payload;
         state.passwordReset = false;
       });
   },

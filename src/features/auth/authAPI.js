@@ -93,8 +93,17 @@ export function resetPassword(data) {
   });
 }
 export function logoutUser() {
-  return new Promise(async (resolve) => {
-    // TODO: Resolve session from server
-    resolve({ status: "Success" });
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch("/auth/logout");
+      if (response.ok) {
+        resolve({ data :'Success' });
+      } else {
+        const errdata = await response.json();
+        reject({ errdata });
+      }
+    } catch (error) {
+      reject(error);
+    }
   });
 }
